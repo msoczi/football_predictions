@@ -40,3 +40,32 @@ You can use the package in two ways:
 python main_script.py
 ```
 Then results will be saved to output.md file for league passed in the configuration file <a href="config.yaml">config.yaml</a>.
+
+
+<br>
+<br>
+ 
+### Upcoming Premier League matches
+
+| Date       |   h_course | HomeTeam       |   d_course | AwayTeam       |   a_course |   pr_h_won |   pr_draw |   pr_a_won | prediction   |
+|:-----------|-----------:|:---------------|-----------:|:---------------|-----------:|-----------:|----------:|-----------:|:-------------|
+| 2021-09-11 |       4.3  | Crystal Palace |       3.4  | Tottenham      |       1.85 |   0.329318 |  0.326657 |   0.344026 | A            |
+| 2021-09-11 |       1.2  | Man. Utd       |       6.75 | Newcastle      |      14.5  |   0.377006 |  0.313049 |   0.309945 | H            |
+| 2021-09-11 |       2.7  | Brentford      |       3    | Brighton       |       2.7  |   0.334466 |  0.328736 |   0.336798 | D            |
+| 2021-09-11 |       3.3  | Watford        |       3.1  | Wolverhampton  |       2.24 |   0.333558 |  0.328423 |   0.338019 | D            |
+| 2021-09-11 |       1.51 | Arsenal        |       4.35 | Norwich        |       5.75 |   0.361551 |  0.32278  |   0.315669 | H            |
+| 2021-09-11 |       2.95 | Southampton    |       3.4  | West Ham       |       2.31 |   0.332461 |  0.324929 |   0.34261  | A            |
+| 2021-09-11 |       5.5  | Leicester      |       4.15 | Man. City      |       1.55 |   0.316791 |  0.322214 |   0.360995 | A            |
+| 2021-09-11 |       1.31 | Chelsea        |       5.2  | Aston Villa    |      10    |   0.377019 |  0.313615 |   0.309366 | H            |
+| 2021-09-12 |       4.5  | Leeds          |       4.1  | Liverpool      |       1.67 |   0.322159 |  0.327243 |   0.350598 | A            |
+| 2021-09-13 |       1.75 | Everton        |       3.6  | Burnley        |       4.6  |   0.356084 |  0.3259   |   0.318016 | H            |
+| 2021-09-17 |       3.2  | Newcastle      |       3.7  | Leeds          |       2.06 |   0.334564 |  0.325473 |   0.339963 | A            |
+| 2021-09-18 |       2.09 | Wolverhampton  |       3.1  | Brentford      |       3.75 |   0.342533 |  0.327754 |   0.329713 | D            |
+| 2021-09-18 |       3.55 | Burnley        |       3.2  | Arsenal        |       2.12 |   0.335372 |  0.325772 |   0.338856 | A            |
+| 2021-09-18 |       1.2  | Liverpool      |       7    | Crystal Palace |      13.25 |   0.37847  |  0.312406 |   0.309124 | H            |
+| 2021-09-18 |       1.15 | Man. City      |       8.05 | Southampton    |      16.25 |   0.379905 |  0.31135  |   0.308745 | H            |
+| 2021-09-18 |       2.11 | Norwich        |       3.4  | Watford        |       3.3  |   0.343969 |  0.326897 |   0.329134 | A            |
+| 2021-09-18 |       2.55 | Aston Villa    |       3.25 | Everton        |       2.7  |   0.332302 |  0.330745 |   0.336954 | D            |
+| 2021-09-19 |       3.45 | West Ham       |       3.65 | Man. Utd       |       1.99 |   0.333382 |  0.325188 |   0.34143  | A            |
+| 2021-09-19 |       2.75 | Brighton       |       3.2  | Leicester      |       2.55 |   0.337163 |  0.328739 |   0.334098 | D            |
+| 2021-09-19 |       3.7  | Tottenham      |       3.4  | Chelsea        |       1.98 |   0.333363 |  0.326208 |   0.340429 | A            |
