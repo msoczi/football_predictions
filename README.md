@@ -31,7 +31,7 @@ So far, no API has been developed that allows for the ongoing tracking of progzo
 <br>
 However, it is possible to clone the repository and use it with python.
 ```sh
-git clone https://github.com/msoczi/YOUR-REPOSITORY
+git clone https://github.com/msoczi/football_predictions
 ```
 You can use the package in two ways:
 1. Interactive - via Jupyter Notebook - as the main function argument pass the name of the league for which you want to get forecasts. 
