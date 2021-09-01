@@ -1,0 +1,72 @@
+league : 'PremierLeague'
+
+season : '2122'
+
+scraping :
+    PremierLeague : 'https://www.sts.pl/pl/zaklady-bukmacherskie/pilka-nozna/anglia/1-liga/184/30862/86451/'
+    Bundesliga : 'https://www.sts.pl/pl/zaklady-bukmacherskie/pilka-nozna/niemcy/1-liga/184/30872/86476/'
+    SerieA : 'https://www.sts.pl/pl/zaklady-bukmacherskie/pilka-nozna/wlochy/1-liga/184/30874/86484/'
+
+teams_names_dict :
+    PremierLeague:
+        Brentford: 'Brentford'
+        Man. Utd: 'Man United'
+        Burnley: 'Burnley'
+        Chelsea: 'Chelsea'
+        Everton: 'Everton'
+        Leicester: 'Leicester'
+        Watford: 'Watford'
+        Norwich: 'Norwich'
+        Newcastle: 'Newcastle'
+        Tottenham: 'Tottenham'
+        Liverpool: 'Liverpool'
+        Aston Villa: 'Aston Villa'
+        Crystal Palace: 'Crystal Palace'
+        Leeds: 'Leeds'
+        Man. City: 'Man City'
+        Brighton: 'Brighton'
+        Southampton: 'Southampton'
+        Wolverhampton: 'Wolves'
+        Arsenal: 'Arsenal'
+        West Ham: 'West Ham'
+    Bundesliga:
+        Moenchengladbach: "M'gladbach"
+        Augsburg: 'Augsburg'
+        Bielefeld: 'Bielefeld'
+        Stuttgart: 'Stuttgart'
+        Union Berlin: 'Union Berlin'
+        Wolfsburg: 'Wolfsburg'
+        Dortmund: 'Dortmund'
+        Mainz: 'Mainz'
+        FC Koeln: 'FC Koln'
+        RB Lipsk: 'RB Leipzig'
+        Bochum: 'Bochum'
+        Ein. Frankfurt: 'Ein Frankfurt'
+        Freiburg: 'Freiburg'
+        Gr. Furth: 'Greuther Furth'
+        Hertha: 'Hertha'
+        Leverkusen: 'Leverkusen'
+        Hoffenheim: 'Hoffenheim'
+        Bayern: 'Bayern Munich'
+    SerieA:
+        Inter: "Inter"
+        Verona: "Verona"
+        Empoli: "Empoli"
+        Torino: "Torino"
+        Bologna: "Bologna"
+        Udinese: "Udinese"
+        Napoli: "Napoli"
+        Roma: "Roma"
+        Cagliari: "Cagliari"
+        Sampdoria: "Sampdoria"
+        Atalanta: "Atalanta"
+        Lazio: "Lazio"
+        Fiorentina: "Fiorentina"
+        Juventus: "Juventus"
+        Genoa: "Genoa"
+        Sassuolo: "Sassuolo"
+        Milan: "Milan"
+        Salernitana: "Salernitana"
+        Venezia: "Venezia"
+        Spezia: "Spezia"
+
