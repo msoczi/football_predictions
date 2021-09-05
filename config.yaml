@@ -6,6 +6,7 @@ scraping :
     PremierLeague : 'https://www.sts.pl/pl/zaklady-bukmacherskie/pilka-nozna/anglia/1-liga/184/30862/86451/'
     Bundesliga : 'https://www.sts.pl/pl/zaklady-bukmacherskie/pilka-nozna/niemcy/1-liga/184/30872/86476/'
     SerieA : 'https://www.sts.pl/pl/zaklady-bukmacherskie/pilka-nozna/wlochy/1-liga/184/30874/86484/'
+    LaLiga : 'https://www.sts.pl/pl/zaklady-bukmacherskie/pilka-nozna/hiszpania/1-liga/184/30867/86464/'
 
 teams_names_dict :
     PremierLeague:
@@ -69,4 +70,25 @@ teams_names_dict :
         Salernitana: "Salernitana"
         Venezia: "Venezia"
         Spezia: "Spezia"
+    LaLiga:
+        Valencia: "Valencia"
+        Cadiz: "Cadiz"
+        Mallorca: "Mallorca"
+        Alaves: "Alaves"
+        Osasuna: "Osasuna"
+        Celta: "Celta"
+        Barcelona: "Barcelona"
+        Sevilla: "Sevilla"
+        Villarreal: "Villarreal"
+        Elche: "Elche"
+        Betis: "Betis"
+        Espanyol: "Espanol"
+        Granada: "Granada"
+        Bilbao: "Ath Bilbao"
+        Real Sociedad: "Sociedad"
+        Atl. Madryt: "Ath Madrid"
+        Levante: "Levante"
+        Getafe: "Getafe"
+        R. Vallecano: "Vallecano"
+        Real Madryt: "Real Madrid"
 
