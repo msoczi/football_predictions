@@ -14,6 +14,7 @@ The advantage of the approach is the ability to predict results from any league.
 - England
 - Italy
 - Germany
+- Spain
 
 Based on the raw data, I created the appropriate characteristics by myself. The full list of variables is available in the file: <a href="model/variables.md">variables</a>
 <br>
