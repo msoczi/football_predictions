@@ -432,6 +432,10 @@ def predict_results(league):
     courses['pr_h_won'] = preds[0]
     courses['pr_draw']  = preds[1]
     courses['pr_a_won'] = preds[2]
+    
+    # Remove courses form returned table - remove this part if you would like to keep courses
+    courses = courses.drop(['h_course','d_course','a_course'], axis=1)
+    
 
     #######
     # Add a column with information about who will win the match according to the decision tree
