@@ -47,3 +47,4 @@
 | a_cw           | float       | average number of corners from all games played so far in the current   season (away team)          |
 | a_cb           | float       | average number of corners conceded from all games played so far in the   current season (away team) |
 | a_pozycja      | int         | the position of the away team in the league table                                                   |
+| position_dst   | int         | position difference in the table                                                                    |

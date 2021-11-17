@@ -4,7 +4,7 @@ The aim of the project was to create a tool for predicting the results of league
 
 The project was implemented _from scratch_, i.e. it included:
 - collection of raw data on the basis of which it will be possible to create characteristics and then modeling
-- creating variables based on i.a. time aggregates (last n matches), position in the table, team form, betting odds
+- creating variables based on i.a. time aggregates (last n matches), position in the table, team form
 - calculate historical data for modeling
 - building the target solution: XGBoost model with 3 classes. Then, based on the estimated probability, a decision tree was created, which in a simple, rule-based way predicts which team will win the match (or a possible draw)
 - creating a script that downloads data about upcoming matches with bookmaker odds (www.sts.pl), creating model variables for given teams and prediction of the match result.
@@ -19,13 +19,13 @@ The advantage of the approach is the ability to predict results from any league.
 Based on the raw data, I created the appropriate characteristics by myself. The full list of variables is available in the file: <a href="model/variables.md">variables</a>
 <br>
 <br>
-The XGBoost model was built on a hand-prepared historical sample containing 3659 rows and 85 variables. As the objective function, `multi: softprob` was used so that the model's output was the probability of assigning observations to each of the 3 classes of match result - H (Home), A (Away), D (Draw).
+The XGBoost model was built on a hand-prepared historical sample containing 3659 rows and 86 variables. As the objective function, `multi:softprob` was used so that the model's output was the probability of assigning observations to each of the 3 classes of match result - H (Home), A (Away), D (Draw).
 <br>
-These probabilities were then used to build a simple decision tree that would allow to categorize individual observations in a rule-based manner, i.e. to predict the final result with simple rules. This procedure allowed for the generalization of the results in such a way that the draw was not too rare (that was a problem - the draw practically did not occur). Below is the sheme of decision tree.
+These probabilities were then used to build a simple decision tree that would allow to categorize individual observations in a rule-based manner, i.e. to predict the final result with simple rules. This procedure allowed for the generalization of the results in such a way that the draw was not too rare. Below is the sheme of decision tree.
 <br>
 ![tree](model/img_tree.png)
 
-The forecasts are made on the basis of scraping information about the upcoming matches from the website www.sts.pl.
+Forecasts **do not use bookmaker odds**. I provide them for information only.
 <br>
 <br>
 So far, no API has been developed that allows for the ongoing tracking of progzones and their results.
@@ -34,9 +34,8 @@ However, it is possible to clone the repository and use it with python.
 ```sh
 git clone https://github.com/msoczi/football_predictions
 ```
-You can use the package in two ways:
-1. Interactive - via Jupyter Notebook - as the main function argument pass the name of the league for which you want to get forecasts. 
-2. Run the <a href="main_script.py">main_script.py</a> from console e.g. 
+How to use ?
+Run the <a href="main_script.py">main_script.py</a> from console e.g. 
 ```sh
 python main_script.py
 ```
@@ -48,25 +47,25 @@ Then results will be saved to output.md file for league passed in the configurat
  
 ### Upcoming Premier League matches
 
-| Date       | HomeTeam       | AwayTeam       |   pr_h_won |   pr_draw |   pr_a_won | prediction   |
-|:-----------|:---------------|:---------------|-----------:|----------:|-----------:|:-------------|
-| 2021-11-05 | Southampton    | Aston Villa    |   0.347455 |  0.326121 |   0.326424 | H            |
-| 2021-11-06 | Man. Utd       | Man. City      |   0.331143 |  0.325841 |   0.343016 | A            |
-| 2021-11-06 | Chelsea        | Burnley        |   0.379335 |  0.312232 |   0.308432 | H            |
-| 2021-11-06 | Brentford      | Norwich        |   0.358447 |  0.327461 |   0.314092 | H            |
-| 2021-11-06 | Crystal Palace | Wolverhampton  |   0.337877 |  0.328001 |   0.334122 | D            |
-| 2021-11-06 | Brighton       | Newcastle      |   0.358938 |  0.32922  |   0.311842 | D            |
-| 2021-11-07 | Everton        | Tottenham      |   0.335312 |  0.325365 |   0.339323 | A            |
-| 2021-11-07 | Leeds          | Leicester      |   0.335849 |  0.327119 |   0.337032 | A            |
-| 2021-11-07 | Arsenal        | Watford        |   0.371857 |  0.316939 |   0.311204 | H            |
-| 2021-11-07 | West Ham       | Liverpool      |   0.333336 |  0.324075 |   0.342589 | A            |
-| 2021-11-20 | Leicester      | Chelsea        |   0.329704 |  0.324095 |   0.346201 | A            |
-| 2021-11-20 | Burnley        | Crystal Palace |   0.335648 |  0.329065 |   0.335288 | D            |
-| 2021-11-20 | Aston Villa    | Brighton       |   0.334769 |  0.330178 |   0.335054 | D            |
-| 2021-11-20 | Norwich        | Southampton    |   0.329278 |  0.325151 |   0.345571 | A            |
-| 2021-11-20 | Wolverhampton  | West Ham       |   0.330044 |  0.326971 |   0.342985 | A            |
-| 2021-11-20 | Watford        | Man. Utd       |   0.316094 |  0.31335  |   0.370556 | A            |
-| 2021-11-20 | Newcastle      | Brentford      |   0.334014 |  0.32581  |   0.340176 | A            |
-| 2021-11-20 | Liverpool      | Arsenal        |   0.374872 |  0.314853 |   0.310276 | H            |
-| 2021-11-21 | Man. City      | Everton        |   0.377862 |  0.312954 |   0.309183 | H            |
-| 2021-11-21 | Tottenham      | Leeds          |   0.348916 |  0.330153 |   0.320931 | D            |
+| Date       |   h_course | HomeTeam       |   d_course | AwayTeam       |   a_course |   pr_h_won |   pr_draw |   pr_a_won | prediction   |
+|:-----------|-----------:|:---------------|-----------:|:---------------|-----------:|-----------:|----------:|-----------:|:-------------|
+| 2021-11-20 |       4.35 | Leicester      |       3.6  | Chelsea        |       1.79 |     0.1153 |    0.1135 |     0.7713 | A            |
+| 2021-11-20 |       2.8  | Burnley        |       3.1  | Crystal Palace |       2.6  |     0.4033 |    0.2309 |     0.3658 | A            |
+| 2021-11-20 |       2.45 | Aston Villa    |       3.2  | Brighton       |       2.85 |     0.4779 |    0.202  |     0.3201 | H            |
+| 2021-11-20 |       3.5  | Norwich        |       3.3  | Southampton    |       2.09 |     0.3494 |    0.1436 |     0.507  | A            |
+| 2021-11-20 |       2.9  | Wolverhampton  |       3.2  | West Ham       |       2.44 |     0.3581 |    0.168  |     0.4738 | A            |
+| 2021-11-20 |       6.05 | Watford        |       4.4  | Man. Utd       |       1.52 |     0.3733 |    0.1913 |     0.4354 | A            |
+| 2021-11-20 |       2.6  | Newcastle      |       3.2  | Brentford      |       2.7  |     0.4377 |    0.1833 |     0.379  | A            |
+| 2021-11-20 |       1.5  | Liverpool      |       4.5  | Arsenal        |       6.2  |     0.711  |    0.1403 |     0.1487 | H            |
+| 2021-11-21 |       1.16 | Man. City      |       7.75 | Everton        |      17    |     0.8697 |    0.088  |     0.0424 | H            |
+| 2021-11-21 |       1.72 | Tottenham      |       3.9  | Leeds          |       4.35 |     0.4001 |    0.3104 |     0.2895 | D            |
+| 2021-11-27 |       1.43 | Arsenal        |       4.75 | Newcastle      |       6.6  |     0.7862 |    0.1449 |     0.069  | H            |
+| 2021-11-27 |       2.26 | Crystal Palace |       3.2  | Aston Villa    |       3.2  |     0.6403 |    0.2046 |     0.1551 | H            |
+| 2021-11-27 |       1.3  | Liverpool      |       5.8  | Southampton    |       8.7  |     0.8308 |    0.0996 |     0.0696 | H            |
+| 2021-11-27 |       3.35 | Norwich        |       3.35 | Wolverhampton  |       2.14 |     0.303  |    0.2016 |     0.4954 | A            |
+| 2021-11-27 |       2.2  | Brighton       |       3.3  | Leeds          |       3.2  |     0.47   |    0.2174 |     0.3126 | H            |
+| 2021-11-28 |       3.6  | Burnley        |       3.3  | Tottenham      |       2.06 |     0.6517 |    0.1645 |     0.1838 | H            |
+| 2021-11-28 |       1.49 | Leicester      |       4.4  | Watford        |       6.05 |     0.5057 |    0.175  |     0.3193 | H            |
+| 2021-11-28 |       2.44 | Brentford      |       3.15 | Everton        |       2.95 |     0.545  |    0.1802 |     0.2748 | H            |
+| 2021-11-28 |       1.32 | Man. City      |       5.6  | West Ham       |       8.55 |     0.7265 |    0.1582 |     0.1153 | H            |
+| 2021-11-28 |       1.75 | Chelsea        |       3.6  | Man. Utd       |       4.6  |     0.6719 |    0.1256 |     0.2024 | H            |

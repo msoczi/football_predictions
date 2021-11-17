@@ -47,6 +47,16 @@ def predict_results(league):
     ########################################################################
     # Tool for loading the CURRENT EO TABLE and creating model variables for prediction
     def calc_features(n, home_team, away_team):
+        """
+        Function returns table with created variables.
+        
+        Args:
+            n (int): ??? is it still necessary 
+            
+            home_team (str): name of home team to create variables
+            
+            away_team (str): name of away team to create variables
+        """
         def read_data(n):
             # n=0 - get all rows
             # n=1 - remove 1 row
@@ -80,78 +90,25 @@ def predict_results(league):
                 return 3
             if results.FTR != results.HoA:
                 return 0
-
-        def gole_zdobyte(results):
+        
+        def create_var_based_on_column(results, return_if_A, return_if_H):
             if results.HoA == 'A':
-                return results.FTAG
+                return results[return_if_A]
             if results.HoA == 'H':
-                return results.FTHG
-
-        def gole_stracone(results):
-            if results.HoA == 'A':
-                return results.FTHG
-            if results.HoA == 'H':
-                return results.FTAG
-
-        def strzaly_oddane(results):
-            if results.HoA == 'A':
-                return results.AS
-            if results.HoA == 'H':
-                return results.HS
-
-        def strzaly_otrzymane(results):
-            if results.HoA == 'A':
-                return results.HS
-            if results.HoA == 'H':
-                return results.AS
-
-        def strz_cel_oddane(results):
-            if results.HoA == 'A':
-                return results.AST
-            if results.HoA == 'H':
-                return results.HST
-
-        def strz_cel_otrzymane(results):
-            if results.HoA == 'A':
-                return results.HST
-            if results.HoA == 'H':
-                return results.AST
-
-        def kornery_wykonane(results):
-            if results.HoA == 'A':
-                return results.AC
-            if results.HoA == 'H':
-                return results.HC
-
-        def kornery_bronione(results):
-            if results.HoA == 'A':
-                return results.HC
-            if results.HoA == 'H':
-                return results.AC
-        def otrzymane_zolte_kartki(results):
-            if results.HoA == 'A':
-                return results.AY
-            if results.HoA == 'H':
-                return results.HY
-
-        def otrzymane_czerwone_kartki(results):
-            if results.HoA == 'A':
-                return results.AR
-            if results.HoA == 'H':
-                return results.HR
-
-
+                return results[return_if_H]
+        
+        
         results['pts'] = results.apply(lambda x: punkty_zdobyte(x), axis=1)
-        results['goal_zdob'] = results.apply(lambda x: gole_zdobyte(x), axis=1)
-        results['goal_strc'] = results.apply(lambda x: gole_stracone(x), axis=1)
-        results['sh_odd'] = results.apply(lambda x: strzaly_oddane(x), axis=1)
-        results['sh_otrz'] = results.apply(lambda x: strzaly_otrzymane(x), axis=1)
-        results['sot_odd'] = results.apply(lambda x: strz_cel_oddane(x), axis=1)
-        results['sot_otrz'] = results.apply(lambda x: strz_cel_otrzymane(x), axis=1)
-        results['cor_wyk'] = results.apply(lambda x: kornery_wykonane(x), axis=1)
-        results['cor_bro'] = results.apply(lambda x: kornery_bronione(x), axis=1)
-        results['yel_card'] = results.apply(lambda x: otrzymane_zolte_kartki(x), axis=1)
-        results['red_card'] = results.apply(lambda x: otrzymane_czerwone_kartki(x), axis=1)
+        results['goal_zdob'] = results.apply(lambda x: create_var_based_on_column(x,'FTAG','FTHG'), axis=1) # gole zdobyte
+        results['goal_strc'] = results.apply(lambda x: create_var_based_on_column(x,'FTHG','FTAG'), axis=1) # gole stracone
+        results['sh_odd'] = results.apply(lambda x: create_var_based_on_column(x,'AS','HS'), axis=1) # strzaly_oddane
+        results['sh_otrz'] = results.apply(lambda x: create_var_based_on_column(x,'HS','AS'), axis=1) # strzaly_otrzymane
+        results['sot_odd'] = results.apply(lambda x: create_var_based_on_column(x,'AST','HST'), axis=1) # strz_cel_oddane
+        results['sot_otrz'] = results.apply(lambda x: create_var_based_on_column(x,'HST','AST'), axis=1) # strz_cel_otrzymane
+        results['cor_wyk'] = results.apply(lambda x: create_var_based_on_column(x,'AC','HC'), axis=1) # kornery_wykonane
+        results['cor_bro'] = results.apply(lambda x: create_var_based_on_column(x,'HC','AC'), axis=1) # kornery_bronione
+        results['yel_card'] = results.apply(lambda x: create_var_based_on_column(x,'AY','HY'), axis=1) # otrzymane_zolte_kartki
+        results['red_card'] = results.apply(lambda x: create_var_based_on_column(x,'HY','AY'), axis=1) # otrzymane_czerwone_kartki
 
         # Preparing data:
         # - group by HomeTeam
@@ -164,99 +121,60 @@ def predict_results(league):
         results_split, results_split_names = split(results, 'Team')
         # We take the form of the team - different versions are possible here
 
-        # List of points scored in the last n matches
-        def team_form_pts_mean(team, n):
-            return team.pts[:n].mean()
 
-        # Average goals scored in the last n matches
-        def team_form_goal_mean(team, n):
-            return team.goal_zdob[:n].mean()
-
-        # Average goals conceded in the last n matches
-        def team_form_goal_strac_mean(team, n):
-            return team.goal_strc[:n].mean()
-
-        # Average shots in the last n matches
-        def team_form_shot_odd_mean(team, n):
-            return team.sh_odd[:n].mean()
-
-        # Average shots 'defended' in the last n matches
-        def team_form_shot_otrz_mean(team, n):
-            return team.sh_otrz[:n].mean()
-
-        # Average shots on target in the last n matches
-        def team_form_shot_trg_odd_mean(team, n):
-            return team.sot_odd[:n].mean()
-
-        # Average shots on target defended in the last n matches
-        def team_form_shot_trg_otrz_mean(team, n):
-            return team.sot_otrz[:n].mean()
-
-        # Average of corners in the last n matches
-        def team_form_cor_wyk_mean(team, n):
-            return team.cor_wyk[:n].mean()
-
-        # Average of corners defended in the last n matches
-        def team_form_kor_bro_mean(team, n):
-            return team.cor_bro[:n].mean()
-
-        # Average number of yellow cards in the last n games
-        def team_form_yel_card_mean(team, n):
-            return team.yel_card[:n].mean()
-
-        # Average number of red cards in the last n games
-        def team_form_red_card_mean(team, n):
-            return team.red_card[:n].mean()
-
-        # Create variables
+        # Function create aggregate variable 
+        def create_aggregate_based_on_variables(team, n, var):
+            return team[var][:n].mean()
+        
+        
+        # Create variables (aggregates)
         form_var = pd.concat([pd.DataFrame(results_split_names),
-                              # Variables based on the number of points scored in the last n matches
-                               pd.DataFrame(list(map(lambda x: team_form_pts_mean(x, 3), results_split))),
-                               pd.DataFrame(list(map(lambda x: team_form_pts_mean(x, 5), results_split))),
-                               pd.DataFrame(list(map(lambda x: team_form_pts_mean(x, 7), results_split))),
-                              # Variable based on the number of goals scored in the last n matches
-                              pd.DataFrame(list(map(lambda x: team_form_goal_mean(x, 3), results_split))),
-                              pd.DataFrame(list(map(lambda x: team_form_goal_mean(x, 5), results_split))),
-                              pd.DataFrame(list(map(lambda x: team_form_goal_mean(x, 7), results_split))),
-                              # Variables based on the number of goals conceded in the last n matches
-                              pd.DataFrame(list(map(lambda x: team_form_goal_strac_mean(x, 3), results_split))),
-                              pd.DataFrame(list(map(lambda x: team_form_goal_strac_mean(x, 5), results_split))),
-                              pd.DataFrame(list(map(lambda x: team_form_goal_strac_mean(x, 7), results_split))),
-                              # Variable based on the number of shots fired in the last n matches
-                              pd.DataFrame(list(map(lambda x: team_form_shot_odd_mean(x, 3), results_split))),
-                              pd.DataFrame(list(map(lambda x: team_form_shot_odd_mean(x, 5), results_split))),
-                              pd.DataFrame(list(map(lambda x: team_form_shot_odd_mean(x, 7), results_split))),
-                              # Variables based on the number of shots received in the last n matches
-                              pd.DataFrame(list(map(lambda x: team_form_shot_otrz_mean(x, 3), results_split))),
-                              pd.DataFrame(list(map(lambda x: team_form_shot_otrz_mean(x, 5), results_split))),
-                              pd.DataFrame(list(map(lambda x: team_form_shot_otrz_mean(x, 7), results_split))),
-
-                              # Variables based on the number of shots fired in the last n matches
-                              pd.DataFrame(list(map(lambda x: team_form_shot_trg_odd_mean(x, 3), results_split))),
-                              pd.DataFrame(list(map(lambda x: team_form_shot_trg_odd_mean(x, 5), results_split))),
-                              pd.DataFrame(list(map(lambda x: team_form_shot_trg_odd_mean(x, 7), results_split))),
-                              # Variables based on the number of shots received in the last n matches
-                              pd.DataFrame(list(map(lambda x: team_form_shot_trg_otrz_mean(x, 3), results_split))),
-                              pd.DataFrame(list(map(lambda x: team_form_shot_trg_otrz_mean(x, 5), results_split))),
-                              pd.DataFrame(list(map(lambda x: team_form_shot_trg_otrz_mean(x, 7), results_split))),
-
-                              # Variables based on the number of corners in the last n matches
-                              pd.DataFrame(list(map(lambda x: team_form_cor_wyk_mean(x, 3), results_split))),
-                              pd.DataFrame(list(map(lambda x: team_form_cor_wyk_mean(x, 5), results_split))),
-                              pd.DataFrame(list(map(lambda x: team_form_cor_wyk_mean(x, 7), results_split))),
-                              # Variables based on the number of corners defended in the last n matches
-                              pd.DataFrame(list(map(lambda x: team_form_kor_bro_mean(x, 3), results_split))),
-                              pd.DataFrame(list(map(lambda x: team_form_kor_bro_mean(x, 5), results_split))),
-                              pd.DataFrame(list(map(lambda x: team_form_kor_bro_mean(x, 7), results_split))),
-                              # Variables based on the number of yellow cards in the last n matches
-                              pd.DataFrame(list(map(lambda x: team_form_yel_card_mean(x, 3), results_split))),
-                              pd.DataFrame(list(map(lambda x: team_form_yel_card_mean(x, 5), results_split))),
-                              pd.DataFrame(list(map(lambda x: team_form_yel_card_mean(x, 7), results_split))),
-                              # Variable based on the number of red cards in the last n matches
-                              pd.DataFrame(list(map(lambda x: team_form_red_card_mean(x, 3), results_split))),
-                              pd.DataFrame(list(map(lambda x: team_form_red_card_mean(x, 5), results_split))),
-                              pd.DataFrame(list(map(lambda x: team_form_red_card_mean(x, 7), results_split))),
-                              ],axis=1,ignore_index=True)
+                          # Zmiene oparte na liczbie zdobytych punktów w ostatnich n meczach
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 3, 'pts'), results_split))),
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 5, 'pts'), results_split))),
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 7, 'pts'), results_split))),
+                          # Zmiene oparte na liczbie zdobytych bramek w ostatnich n meczach
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 3, 'goal_zdob'), results_split))),
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 5, 'goal_zdob'), results_split))),
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 7, 'goal_zdob'), results_split))),
+                          # Zmiene oparte na liczbie straconych bramek w ostatnich n meczach
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 3, 'goal_strc'), results_split))),
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 5, 'goal_strc'), results_split))),
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 7, 'goal_strc'), results_split))),
+                          # Zmiene oparte na liczbie oddanych strzałów w ostatnich n meczach
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 3, 'sh_odd'), results_split))),
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 5, 'sh_odd'), results_split))),
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 7, 'sh_odd'), results_split))),
+                          # Zmiene oparte na liczbie otrzymanych strzałów w ostatnich n meczach
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 3, 'sh_otrz'), results_split))),
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 5, 'sh_otrz'), results_split))),
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 7, 'sh_otrz'), results_split))),
+                          # Zmiene oparte na liczbie oddanych strzałów w ostatnich n meczach
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 3, 'sot_odd'), results_split))),
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 5, 'sot_odd'), results_split))),
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 7, 'sot_odd'), results_split))),
+                          # Zmiene oparte na liczbie otrzymanych strzałów w ostatnich n meczach
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 3, 'sot_otrz'), results_split))),
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 5, 'sot_otrz'), results_split))),
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 7, 'sot_otrz'), results_split))),
+                          # Zmiene oparte na liczbie kornerów wykonanych w ostatnich n meczach
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 3, 'cor_wyk'), results_split))),
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 5, 'cor_wyk'), results_split))),
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 7, 'cor_wyk'), results_split))),
+                          # Zmiene oparte na liczbie korneró bronionych w ostatnich n meczach
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 3, 'cor_bro'), results_split))),
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 5, 'cor_bro'), results_split))),
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 7, 'cor_bro'), results_split))),
+                          # Zmiene oparte na liczbie zółtych kartek w ostatnich n meczach
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 3, 'yel_card'), results_split))),
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 5, 'yel_card'), results_split))),
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 7, 'yel_card'), results_split))),
+                          # Zmiene oparte na liczbie czerwonych kartek w ostatnich n meczach
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 3, 'red_card'), results_split))),
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 5, 'red_card'), results_split))),
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 7, 'red_card'), results_split))),
+                          ],axis=1,ignore_index=True)
+        
 
         # Change names of variables
         form_var.columns = ['Team',
@@ -359,8 +277,10 @@ def predict_results(league):
         a_var.columns = ['a_'+i for i in a_var.columns]
         a_var.index = [0]
 
-        return pd.concat([h_var, a_var], axis=1)
-
+        output_concat = pd.concat([h_var, a_var], axis=1)
+        output_concat['position_dst'] = abs(output_concat['h_pozycja'] - output_concat['a_pozycja'])
+        return output_concat
+    
 
     ####################################################################################
     # Scraping future matches and their odds from the STS website
@@ -382,7 +302,7 @@ def predict_results(league):
     del dates
     courses.columns = ['HomeTeam','h_course','x','d_course','AwayTeam','a_course','Date']
 
-    # zapisujemy tabelke z kursami
+    # save table with courses
     courses.to_csv('courses.csv')
 
 
@@ -398,16 +318,14 @@ def predict_results(league):
         d_kurs = courses.iloc[i,3]
         a_kurs = courses.iloc[i,5]
 
+        # ??? czy to jest nadal potrzebne?
         kursy_concat = pd.DataFrame([[h_kurs,d_kurs,a_kurs]], columns = ['h_course','d_course','a_course'])
 
+        # Line by line, variable for each match are created
         if i == 0:
-            pd.concat([kursy_concat,
-                  calc_features(0, home_team = HOME_TEAM, away_team = AWAY_TEAM)
-                  ], axis=1).to_csv('vars_to_predict.csv', mode='a', header=True)
+            calc_features(0, home_team = HOME_TEAM, away_team = AWAY_TEAM).to_csv('vars_to_predict.csv', mode='a', header=True)
         else:
-            pd.concat([kursy_concat,
-                  calc_features(0, home_team = HOME_TEAM, away_team = AWAY_TEAM)
-                  ], axis=1).to_csv('vars_to_predict.csv', mode='a', header=False)
+            calc_features(0, home_team = HOME_TEAM, away_team = AWAY_TEAM).to_csv('vars_to_predict.csv', mode='a', header=False)
 
 
 
@@ -433,8 +351,8 @@ def predict_results(league):
     courses['pr_draw']  = preds[1]
     courses['pr_a_won'] = preds[2]
     
-    # Remove courses form returned table - remove this part if you would like to keep courses
-    courses = courses.drop(['h_course','d_course','a_course'], axis=1)
+    # !Remove courses form returned table - comment this line below if you would like to keep courses
+    # courses = courses.drop(['h_course','d_course','a_course'], axis=1)
     
 
     #######
@@ -442,6 +360,7 @@ def predict_results(league):
     tree_preds = tree_model.predict(preds)
     preds_after_translation = [dicts2translate['idx2str'][elem] for elem in tree_preds]
     courses['prediction'] = preds_after_translation
+    courses = courses.round({'pr_h_won': 4, 'pr_draw': 4, 'pr_a_won': 4})
 
     # Remove unnecessary temporary files
     os.remove('vars_to_predict.csv')
