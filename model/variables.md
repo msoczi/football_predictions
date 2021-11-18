@@ -6,9 +6,6 @@
 | HomeTeam       | string      | home team                                                                                           |
 | AwayTeam       | string      | away team                                                                                           |
 | FTR            | categorical | Full Time Result (H=Home Win, D=Draw, A=Away Win)                                                   |
-| h_course       | float       | home win odds                                                                                       |
-| d_course       | float       | draw win odds                                                                                       |
-| a_course       | float       | away win odds                                                                                       |
 | h_pts_n        | float       | average of points scored by the home team in n matches                                              |
 | h_gz_n         | float       | average number of goals scored by the home team in n matches                                        |
 | h_gs_n         | float       | average number of goals conceded by the home team in n matches                                      |
