@@ -5,6 +5,7 @@ import yaml
 import os
 import re
 import pandas as pd
+import numpy as np
 import requests
 from bs4 import BeautifulSoup
 from datetime import datetime
@@ -122,74 +123,110 @@ def predict_results(league):
         # We take the form of the team - different versions are possible here
 
 
-        # Function create aggregate variable 
-        def create_aggregate_based_on_variables(team, n, var):
-            return team[var][:n].mean()
-        
-        
+        # Function create aggregate variable
+        def create_aggregate_based_on_variables(team, n, var, stat):
+            return stat(team[var][:n])
+       
+       
+       
         # Create variables (aggregates)
         form_var = pd.concat([pd.DataFrame(results_split_names),
                           # Zmiene oparte na liczbie zdobytych punktów w ostatnich n meczach
-                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 3, 'pts'), results_split))),
-                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 5, 'pts'), results_split))),
-                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 7, 'pts'), results_split))),
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 3, 'pts', np.mean), results_split))),
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 5, 'pts', np.mean), results_split))),
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 7, 'pts', np.mean), results_split))),
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 3, 'pts', np.std), results_split))),
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 5, 'pts', np.std), results_split))),
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 7, 'pts', np.std), results_split))),
                           # Zmiene oparte na liczbie zdobytych bramek w ostatnich n meczach
-                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 3, 'goal_zdob'), results_split))),
-                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 5, 'goal_zdob'), results_split))),
-                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 7, 'goal_zdob'), results_split))),
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 3, 'goal_zdob', np.mean), results_split))),
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 5, 'goal_zdob', np.mean), results_split))),
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 7, 'goal_zdob', np.mean), results_split))),
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 3, 'goal_zdob', np.std), results_split))),
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 5, 'goal_zdob', np.std), results_split))),
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 7, 'goal_zdob', np.std), results_split))),
                           # Zmiene oparte na liczbie straconych bramek w ostatnich n meczach
-                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 3, 'goal_strc'), results_split))),
-                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 5, 'goal_strc'), results_split))),
-                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 7, 'goal_strc'), results_split))),
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 3, 'goal_strc', np.mean), results_split))),
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 5, 'goal_strc', np.mean), results_split))),
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 7, 'goal_strc', np.mean), results_split))),
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 3, 'goal_strc', np.std), results_split))),
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 5, 'goal_strc', np.std), results_split))),
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 7, 'goal_strc', np.std), results_split))),
                           # Zmiene oparte na liczbie oddanych strzałów w ostatnich n meczach
-                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 3, 'sh_odd'), results_split))),
-                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 5, 'sh_odd'), results_split))),
-                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 7, 'sh_odd'), results_split))),
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 3, 'sh_odd', np.mean), results_split))),
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 5, 'sh_odd', np.mean), results_split))),
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 7, 'sh_odd', np.mean), results_split))),
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 3, 'sh_odd', np.std), results_split))),
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 5, 'sh_odd', np.std), results_split))),
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 7, 'sh_odd', np.std), results_split))),
                           # Zmiene oparte na liczbie otrzymanych strzałów w ostatnich n meczach
-                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 3, 'sh_otrz'), results_split))),
-                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 5, 'sh_otrz'), results_split))),
-                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 7, 'sh_otrz'), results_split))),
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 3, 'sh_otrz', np.mean), results_split))),
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 5, 'sh_otrz', np.mean), results_split))),
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 7, 'sh_otrz', np.mean), results_split))),
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 3, 'sh_otrz', np.std), results_split))),
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 5, 'sh_otrz', np.std), results_split))),
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 7, 'sh_otrz', np.std), results_split))),
                           # Zmiene oparte na liczbie oddanych strzałów w ostatnich n meczach
-                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 3, 'sot_odd'), results_split))),
-                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 5, 'sot_odd'), results_split))),
-                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 7, 'sot_odd'), results_split))),
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 3, 'sot_odd', np.mean), results_split))),
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 5, 'sot_odd', np.mean), results_split))),
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 7, 'sot_odd', np.mean), results_split))),
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 3, 'sot_odd', np.std), results_split))),
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 5, 'sot_odd', np.std), results_split))),
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 7, 'sot_odd', np.std), results_split))),
                           # Zmiene oparte na liczbie otrzymanych strzałów w ostatnich n meczach
-                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 3, 'sot_otrz'), results_split))),
-                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 5, 'sot_otrz'), results_split))),
-                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 7, 'sot_otrz'), results_split))),
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 3, 'sot_otrz', np.mean), results_split))),
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 5, 'sot_otrz', np.mean), results_split))),
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 7, 'sot_otrz', np.mean), results_split))),
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 3, 'sot_otrz', np.std), results_split))),
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 5, 'sot_otrz', np.std), results_split))),
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 7, 'sot_otrz', np.std), results_split))),
                           # Zmiene oparte na liczbie kornerów wykonanych w ostatnich n meczach
-                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 3, 'cor_wyk'), results_split))),
-                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 5, 'cor_wyk'), results_split))),
-                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 7, 'cor_wyk'), results_split))),
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 3, 'cor_wyk', np.mean), results_split))),
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 5, 'cor_wyk', np.mean), results_split))),
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 7, 'cor_wyk', np.mean), results_split))),
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 3, 'cor_wyk', np.std), results_split))),
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 5, 'cor_wyk', np.std), results_split))),
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 7, 'cor_wyk', np.std), results_split))),
                           # Zmiene oparte na liczbie korneró bronionych w ostatnich n meczach
-                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 3, 'cor_bro'), results_split))),
-                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 5, 'cor_bro'), results_split))),
-                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 7, 'cor_bro'), results_split))),
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 3, 'cor_bro', np.mean), results_split))),
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 5, 'cor_bro', np.mean), results_split))),
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 7, 'cor_bro', np.mean), results_split))),
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 3, 'cor_bro', np.std), results_split))),
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 5, 'cor_bro', np.std), results_split))),
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 7, 'cor_bro', np.std), results_split))),
                           # Zmiene oparte na liczbie zółtych kartek w ostatnich n meczach
-                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 3, 'yel_card'), results_split))),
-                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 5, 'yel_card'), results_split))),
-                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 7, 'yel_card'), results_split))),
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 3, 'yel_card', np.mean), results_split))),
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 5, 'yel_card', np.mean), results_split))),
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 7, 'yel_card', np.mean), results_split))),
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 3, 'yel_card', np.std), results_split))),
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 5, 'yel_card', np.std), results_split))),
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 7, 'yel_card', np.std), results_split))),
                           # Zmiene oparte na liczbie czerwonych kartek w ostatnich n meczach
-                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 3, 'red_card'), results_split))),
-                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 5, 'red_card'), results_split))),
-                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 7, 'red_card'), results_split))),
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 3, 'red_card', np.mean), results_split))),
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 5, 'red_card', np.mean), results_split))),
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 7, 'red_card', np.mean), results_split))),
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 3, 'red_card', np.std), results_split))),
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 5, 'red_card', np.std), results_split))),
+                          pd.DataFrame(list(map(lambda x: create_aggregate_based_on_variables(x, 7, 'red_card', np.std), results_split))),
                           ],axis=1,ignore_index=True)
+
+
         
 
         # Change names of variables
         form_var.columns = ['Team',
-                            'pts_3','pts_5','pts_7',
-                            'gz_3','gz_5','gz_7',
-                            'gs_3','gs_5','gs_7',
-                            'sh_od_3','sh_od_5','sh_od_7',
-                            'sh_ot_3','sh_ot_5','sh_ot_7',
-                            'sot_od_3','sot_od_5','sot_od_7',
-                            'sot_ot_3','sot_ot_5','sot_ot_7',
-                            'cw_3','cw_5','cw_7',
-                            'cb_3','cb_5','cb_7',
-                            'yc_3','yc_5','yc_7',
-                            'rc_3','rc_5','rc_7',
-                           ]
+                        'pts_avg3','pts_avg5','pts_avg7','pts_std3','pts_std5','pts_std7',
+                        'gz_avg3','gz_avg5','gz_avg7','gz_std3','gz_std5','gz_std7',
+                        'gs_avg3','gs_avg5','gs_avg7','gs_std3','gs_std5','gs_std7',
+                        'sh_od_avg3','sh_od_avg5','sh_od_avg7','sh_od_std3','sh_od_std5','sh_od_std7',
+                        'sh_ot_avg3','sh_ot_avg5','sh_ot_avg7','sh_ot_std3','sh_ot_std5','sh_ot_std7',
+                        'sot_od_avg3','sot_od_avg5','sot_od_avg7','sot_od_std3','sot_od_std5','sot_od_std7',
+                        'sot_ot_avg3','sot_ot_avg5','sot_ot_avg7','sot_ot_std3','sot_ot_std5','sot_ot_std7',
+                        'cw_avg3','cw_avg5','cw_avg7','cw_std3','cw_std5','cw_std7',
+                        'cb_avg3','cb_avg5','cb_avg7','cb_std3','cb_std5','cb_std7',
+                        'yc_avg3','yc_avg5','yc_avg7','yc_std3','yc_std5','yc_std7',
+                        'rc_avg3','rc_avg5','rc_avg7','rc_std3','rc_std5','rc_std7'
+                       ]
 
         form_var = form_var.set_index('Team')
 
