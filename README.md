@@ -23,7 +23,7 @@ The XGBoost model was built on a hand-prepared historical sample containing 3659
 <br>
 These probabilities were then used to build a simple decision tree that would allow to categorize individual observations in a rule-based manner, i.e. to predict the final result with simple rules. This procedure allowed for the generalization of the results in such a way that the draw was not too rare. Below is the sheme of decision tree.
 <br>
-![tree](model/img_tree.png)
+![tree](model/img_tree.PNG)
 
 Forecasts **do not use bookmaker odds**. I provide them for information only.
 <br>
