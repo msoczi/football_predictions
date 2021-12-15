@@ -59,31 +59,40 @@ def predict_results(league):
             away_team (str): name of away team to create variables
         """
         def read_data(n):
-            # n=0 - get all rows
+            """
+            Function read data form E0.csv file, drop n last rows and return a truncated DataFrame.
+            # n=0 - keep all rows
             # n=1 - remove 1 row
             # n=k - remove k row
+            """
             results = pd.read_csv('E0.csv', parse_dates=['Date'], dayfirst=True)
             results = results.drop(results.tail(n+1).index)
             return results
 
         results = read_data(0)
         results = results[['Date','HomeTeam','AwayTeam','FTHG','FTAG','FTR','HS','AS','HST','AST','HC','AC','HY','AY','HR','AR']]
-        table = pd.DataFrame(set(results.HomeTeam), columns = ['Team'])
+        table = pd.DataFrame(set(results.HomeTeam), columns = ['Team'])  # is this still necessary??
+        
         results2 = results.copy()
         results2 = results2.drop(['HomeTeam'], axis=1)
         results2['HomeTeam'] = results2.AwayTeam
         results2 = results2.drop(['AwayTeam'], axis=1)
         results2['HoA'] = 'A'
-
         results['HoA'] = 'H'
         results = results.drop(['AwayTeam'], axis=1)
-        results
-
+        # Tables:
+        # results - statistics from the home team point of view
+        # results2 - statistics from the away team point of view
+        
+        # Concat results and results2 to have statisctis from both (home and away) point of view - to create variables relating to a specific match
         results = pd.concat([results, results2], axis=0,ignore_index=True)
         results.rename(columns={'HomeTeam':'Team'}, inplace=True)
         #results['Date'] = pd.to_datetime(results['Date'], format='%d/%m/%y')
         results = results.sort_values(by=['Date'], ascending=False)
-
+        
+        
+        #############################################################
+        ### Create variables relating to a specific match
         def punkty_zdobyte(results):
             if results.FTR == 'D':
                 return 1
@@ -98,7 +107,6 @@ def predict_results(league):
             if results.HoA == 'H':
                 return results[return_if_H]
         
-        
         results['pts'] = results.apply(lambda x: punkty_zdobyte(x), axis=1)
         results['goal_zdob'] = results.apply(lambda x: create_var_based_on_column(x,'FTAG','FTHG'), axis=1) # gole zdobyte
         results['goal_strc'] = results.apply(lambda x: create_var_based_on_column(x,'FTHG','FTAG'), axis=1) # gole stracone
@@ -110,24 +118,29 @@ def predict_results(league):
         results['cor_bro'] = results.apply(lambda x: create_var_based_on_column(x,'HC','AC'), axis=1) # kornery_bronione
         results['yel_card'] = results.apply(lambda x: create_var_based_on_column(x,'AY','HY'), axis=1) # otrzymane_zolte_kartki
         results['red_card'] = results.apply(lambda x: create_var_based_on_column(x,'HY','AY'), axis=1) # otrzymane_czerwone_kartki
+        ### END OF create variables relating to a specific match
+        #############################################################
 
-        # Preparing data:
-        # - group by HomeTeam
-        # - we are reversing the datasets to take into consideration the latest matches
 
+
+        ##################################################
+        ### Create variables-aggregates (in time)
+        
+        # Preparing data for create those variables-aggregates:
+        # - split() will create DataFrame with all matches (sorted decreasing in time) for each team.
+        # - then for each Team we can create time-based variable e.g. number of goals scored in last 3 matches
+        # - then, there will be created table 'form_var' with variables-aggregates for each teams
+
+        # Split function
         def split(data, f):
             grouped = data.groupby(f)
             return [g for _, g in grouped], list(grouped.groups.keys())
 
         results_split, results_split_names = split(results, 'Team')
-        # We take the form of the team - different versions are possible here
-
 
         # Function create aggregate variable
         def create_aggregate_based_on_variables(team, n, var, stat):
             return stat(team[var][:n])
-       
-       
        
         # Create variables (aggregates)
         form_var = pd.concat([pd.DataFrame(results_split_names),
@@ -211,8 +224,6 @@ def predict_results(league):
                           ],axis=1,ignore_index=True)
 
 
-        
-
         # Change names of variables
         form_var.columns = ['Team',
                         'pts_avg3','pts_avg5','pts_avg7','pts_std3','pts_std5','pts_std7',
@@ -229,11 +240,19 @@ def predict_results(league):
                        ]
 
         form_var = form_var.set_index('Team')
+        ### END OF create variables-aggregates (in time)
+        ##################################################
+        
+        
+        
+        
 
-        ###################################################################
-        # Create a league table and other variables (not based on time)
-        ###################################################################
+        #####################################################################
+        ### Create a league table and other variables (based on league table)
+        # - here we will create a league table based on DataFrame with all matches
+        # - we will aggregate simple statistics like 'shots on target' to create variables like 'sum of shots on target in whole season so far'
 
+        # Read matches with drop n rows
         results = read_data(n)
         results = results[['Date','HomeTeam','AwayTeam','FTHG','FTAG','FTR','HS','AS','HST','AST','HC','AC']]
 
@@ -281,7 +300,6 @@ def predict_results(league):
         # NOTE: In the case of an equal number of points, the position in the table depends on the rules by specific league.
         # We will always assume the order: pts'> 'goal_bilans'>' goal_zdob '
 
-
         # Number of matches played at home and away
         res_table['H_nmatch'] = results.groupby('HomeTeam').size()
         res_table['A_nmatch'] = results.groupby('AwayTeam').size()
@@ -296,10 +314,18 @@ def predict_results(league):
         res_table['cw'] = res_table.cor_wyk/res_table.n_match
         res_table['cb'] = res_table.cor_bro/res_table.n_match
         res_table['pozycja'] = range(1,len(res_table)+1)
-        res_table
+        
+        ### END OF Create a league table and other variables (based on league table)
+        #####################################################################
+        
+        
+        
 
         ###########################################################################
-        # The (almost) output table - data with created variables
+        ### Concatenate tables with all types of variables:
+        # - form_var (aggregates)
+        # - res_table (variables from league table)
+        # The (almost) output table is the data with created variables
         ###########################################################################
 
         output = pd.concat([form_var,
@@ -319,32 +345,45 @@ def predict_results(league):
         return output_concat
     
 
+
+
+
     ####################################################################################
     # Scraping future matches and their odds from the STS website
-    page = requests.get(config['scraping'][league])
-    soup = BeautifulSoup(page.content, 'html.parser')
+    def odds_scraping():
+        page = requests.get(config['scraping'][league])
+        soup = BeautifulSoup(page.content, 'html.parser')
 
-    table = soup.findAll("table", { "class" : "subTable"})
+        table = soup.findAll("table", { "class" : "subTable"})
 
-    def take_courses(x):
-        return re.sub('\n+', '\n', x.text).lstrip().rstrip().split('\n')
+        def take_courses(x):
+            return re.sub('\n+', '\n', x.text).lstrip().rstrip().split('\n')
 
-    def take_date(x):
-        return str(x.find("td", {"class" : "bet bigTip"})).split("oppty_end_date",1)[1][3:13]
+        def take_date(x):
+            return str(x.find("td", {"class" : "bet bigTip"})).split("oppty_end_date",1)[1][3:13]
 
-    courses = pd.DataFrame(map(take_courses, table))
-    dates = pd.DataFrame(map(take_date, table))
+        courses = pd.DataFrame(map(take_courses, table))
+        dates = pd.DataFrame(map(take_date, table))
 
-    courses = pd.concat([courses, dates], axis=1, ignore_index=True)
-    del dates
-    courses.columns = ['HomeTeam','h_course','x','d_course','AwayTeam','a_course','Date']
+        courses = pd.concat([courses, dates], axis=1, ignore_index=True)
+        del dates
+        courses.columns = ['HomeTeam','h_course','x','d_course','AwayTeam','a_course','Date']
 
-    # save table with courses
-    courses.to_csv('courses.csv')
+        # Sometimes there are problems with whitespaces on the begining on the team name while scraping
+        courses['HomeTeam'] = courses['HomeTeam'].apply(str.lstrip)
+        courses['AwayTeam'] = courses['AwayTeam'].apply(str.lstrip)
+        
+        return courses
+    
+    # Call function to create DataFrame 'courses' with odds
+    courses = odds_scraping()
+
+
+
 
 
     ####################################################################################
-    # Creating a vars_to_predict file and create variables for a given team
+    # Creating a vars_to_predict file with created variables for a given team
     teams_names_dict = config['teams_names_dict'][league]
 
     for i in range(len(courses)):
@@ -354,9 +393,6 @@ def predict_results(league):
         h_kurs = courses.iloc[i,1]
         d_kurs = courses.iloc[i,3]
         a_kurs = courses.iloc[i,5]
-
-        # ??? czy to jest nadal potrzebne?
-        kursy_concat = pd.DataFrame([[h_kurs,d_kurs,a_kurs]], columns = ['h_course','d_course','a_course'])
 
         # Line by line, variable for each match are created
         if i == 0:
@@ -371,8 +407,6 @@ def predict_results(league):
     data_to_predict = pd.read_csv('vars_to_predict.csv', sep=',')
     data_to_predict = data_to_predict.drop(['Unnamed: 0'], axis=1)
 
-    courses = pd.read_csv('courses.csv', sep=',')
-    courses = courses.drop(['Unnamed: 0','x'], axis=1)
     courses = courses[['Date','h_course','HomeTeam','d_course','AwayTeam','a_course']]
 
     # Uploading models and components
@@ -402,7 +436,6 @@ def predict_results(league):
     # Remove unnecessary temporary files
     os.remove('vars_to_predict.csv')
     os.remove('E0.csv')
-    os.remove('courses.csv')
 
     return courses
     
