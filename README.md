@@ -19,7 +19,7 @@ The advantage of the approach is the ability to predict results from any league.
 Based on the raw data, I created the appropriate characteristics by myself. The full list of variables is available in the file: <a href="model/variables.md">variables</a>
 <br>
 <br>
-The XGBoost model was built on a hand-prepared historical sample containing 7210 rows and 354 columns. As the objective function, `multi:softprob` was used so that the model's output was the probability of assigning observations to each of the 3 classes of match result - H (Home), A (Away), D (Draw).
+The XGBoost model was built on a hand-prepared historical sample containing 7210 rows and 354 columns. As the objective function, `multi:softprob` was used so that the model's output was the probability of assigning observations to each of the 3 classes of match result - **H (Home), A (Away), D (Draw)**.
 <br>
 These probabilities were then used to build a simple decision tree (`max_depth = 3`) that would allow to categorize individual observations in a rule-based manner, i.e. to predict the final result with simple rules. This procedure allowed for the generalization of the results in such a way that the draw was not too rare. Below is the sheme of decision tree.
 <br>
@@ -28,7 +28,7 @@ These probabilities were then used to build a simple decision tree (`max_depth =
 Forecasts **do not use bookmaker odds**. I provide them for information only.
 <br>
 <br>
-So far, no API has been developed that allows for the ongoing tracking of progzones and their results.
+So far, no API has been developed that allows for the online forecasting.
 <br>
 However, it is possible to clone the repository and use it with python.
 <br>
@@ -38,14 +38,12 @@ How to use?
 git clone https://github.com/msoczi/football_predictions
 ```
 2. Create and activate virtual environment for python.
-LINUX:
 ```sh
+# LINUX:
 python3 -m venv football_preds
 source football_preds/bin/activate
 
-```
-WINDOWS:
-```sh
+# WINDOWS:
 python -m venv football_preds
 football_preds/Scripts/activate
 ```
@@ -59,8 +57,6 @@ python main_script.py
 ```
 Then results will be saved to output.md file for league passed in the configuration file <a href="config.yaml">config.yaml</a>.
 
-
-<br>
 <br>
  
 ### Upcoming Premier League matches
