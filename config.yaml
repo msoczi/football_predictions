@@ -7,7 +7,15 @@ scraping :
     Bundesliga : 'https://www.sts.pl/pl/zaklady-bukmacherskie/pilka-nozna/niemcy/1-liga/184/30872/86476/'
     SerieA : 'https://www.sts.pl/pl/zaklady-bukmacherskie/pilka-nozna/wlochy/1-liga/184/30874/86484/'
     LaLiga : 'https://www.sts.pl/pl/zaklady-bukmacherskie/pilka-nozna/hiszpania/1-liga/184/30867/86464/'
+    Ligue1 : 'https://www.sts.pl/pl/zaklady-bukmacherskie/pilka-nozna/francja/1-liga/184/30868/86465/'
 
+csv_name :
+    PremierLeague : '/E0.csv'
+    Bundesliga : '/D1.csv'
+    SerieA : '/I1.csv'
+    LaLiga : '/SP1.csv'
+    Ligue1 : '/F1.csv'
+    
 teams_names_dict :
     PremierLeague:
         Brentford: 'Brentford'
@@ -91,4 +99,26 @@ teams_names_dict :
         Getafe: "Getafe"
         R. Vallecano: "Vallecano"
         Real Madryt: "Real Madrid"
+    Ligue1 :
+        Monaco: Monaco
+        Lyon: Lyon
+        Troyes: Troyes
+        Rennes: Rennes
+        Bordeaux: Bordeaux
+        Nice: Nice
+        St. Etienne: St Etienne
+        Strasbourg: Strasbourg
+        Metz: Metz
+        Montpellier: Montpellier
+        Lorient: Lorient
+        Lille: Lille
+        PSG: Paris SG
+        Angers: Angers
+        Brest: Brest
+        Clermont: Clermont
+        Nantes: Nantes
+        Reims: Reims
+        Lens: Lens
+        Marsylia: Marseille
+
 

@@ -34,14 +34,16 @@ def predict_results(league):
 
     ########################################################################
     ### Downloade data - results of matches from a given league ####
-    if league == 'PremierLeague':
-        req = requests.get('https://www.football-data.co.uk/mmz4281/'+config['season']+'/E0.csv')
-    if league == 'Bundesliga':
-        req = requests.get('https://www.football-data.co.uk/mmz4281/'+config['season']+'/D1.csv')
-    if league == 'SerieA':
-        req = requests.get('https://www.football-data.co.uk/mmz4281/'+config['season']+'/I1.csv')
-    if league == 'LaLiga':
-        req = requests.get('https://www.football-data.co.uk/mmz4281/'+config['season']+'/SP1.csv')
+    #if league == 'PremierLeague':
+    #    req = requests.get('https://www.football-data.co.uk/mmz4281/'+config['season']+'/E0.csv')
+    #if league == 'Bundesliga':
+    #    req = requests.get('https://www.football-data.co.uk/mmz4281/'+config['season']+'/D1.csv')
+    #if league == 'SerieA':
+    #    req = requests.get('https://www.football-data.co.uk/mmz4281/'+config['season']+'/I1.csv')
+    #if league == 'LaLiga':
+    #    req = requests.get('https://www.football-data.co.uk/mmz4281/'+config['season']+'/SP1.csv')
+        
+    req = requests.get('https://www.football-data.co.uk/mmz4281/'+config['season']+config['csv_name'][league])
     url_content = req.content
     csv_file_results = open('E0.csv', 'wb')    # save results as E0.csv file
     csv_file_results.write(url_content)
@@ -498,7 +500,7 @@ def predict_results(league):
     
     # setup toolbar
     toolbar_width = len(courses)
-    sys.stdout.write("[%s]" % (" " * toolbar_width))
+    sys.stdout.write("Progress: [%s]" % (" " * toolbar_width))
     sys.stdout.flush()
     sys.stdout.write("\b" * (toolbar_width+1)) # return to start of line, after '['
     
