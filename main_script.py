@@ -17,6 +17,9 @@ import pickle
 import time
 import sys
 
+LEAGUE = str(sys.argv[1])
+
+
 ########################################################################
 ################ Get settings from a configuration file ################
 with open("config.yaml", 'r') as configuration:
@@ -556,6 +559,7 @@ def predict_results(league):
     preds_after_translation = [dicts2translate['idx2str'][elem] for elem in tree_preds]
     courses['prediction'] = preds_after_translation
     courses = courses.round({'pr_h_won': 4, 'pr_draw': 4, 'pr_a_won': 4})
+    courses.columns = ['Date', 'H - odds','HomeTeam','D - odds','AwayTeam','A - odds','prob H','prob D','prob A','Prediction']
 
     # Remove unnecessary temporary files
     os.remove('vars_to_predict.csv')
@@ -565,15 +569,18 @@ def predict_results(league):
     
 
 # LOG
-print('Predictions for',config['league'], 'in progress...')
+print('Predictions for',LEAGUE, 'in progress...')
 
 # Run function for premier league
-courses = predict_results(league = config['league'])
+courses = predict_results(league = LEAGUE)
 
 # Save output in .md file
-with open('output.md', 'w') as file:
-    file.write(courses.to_markdown(index = False))
+#with open('output.md', 'w') as file:
+#    file.write(courses.to_markdown(index = False))
+# Save output in html file
+with open('output_tables/'+LEAGUE+'.html', 'w') as file:
+    file.write(courses.to_html(index = False, classes='content-table'))
 
 # LOG
-print('Process complited!\n Output in:', 'output.md')
+print('Process complited!\n Output in:', LEAGUE+'.html')
 
