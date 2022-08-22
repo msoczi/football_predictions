@@ -1,11 +1,11 @@
 ## Dataset description
 
 Possible aggregation:
-* avg
-* std
-* wz
-* min
-* max
+* avg - average
+* std - standard deviation
+* wz - coefficient of variation
+* min - minimum
+* max - maximum
 
 |     Variable    | Type        | Description                                                                                           |
 |:---------------:|-------------|-------------------------------------------------------------------------------------------------------|

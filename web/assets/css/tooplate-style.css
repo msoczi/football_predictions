@@ -112,7 +112,7 @@ html {
 }
 
 .main-nav li:last-child a {
-    border-bottom: 1px solid #69C;
+    border-bottom: 1px solid #33cc80;
 }
 
 .main-nav li {
@@ -128,7 +128,7 @@ html {
     color: #fff;
     width: 100%;
     transition: all 0.5s;
-    border-top: 1px solid #69C;
+    border-top: 1px solid #33cc80;
 }
 
 .main-nav li:hover a,

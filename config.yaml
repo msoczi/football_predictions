@@ -1,6 +1,6 @@
 league : 'PremierLeague'
 
-season : '2122'
+season : '2223'
 
 scraping :
     PremierLeague : 'https://www.sts.pl/pl/zaklady-bukmacherskie/pilka-nozna/anglia/1-liga/184/30862/86451/'
@@ -38,6 +38,9 @@ teams_names_dict :
         Wolverhampton: 'Wolves'
         Arsenal: 'Arsenal'
         West Ham: 'West Ham'
+        Bournemouth: 'Bournemouth'
+        Fulham: 'Fulham'
+        Nottingham: "Nott'm Forest"
     Bundesliga:
         Moenchengladbach: "M'gladbach"
         Augsburg: 'Augsburg'
@@ -57,6 +60,8 @@ teams_names_dict :
         Leverkusen: 'Leverkusen'
         Hoffenheim: 'Hoffenheim'
         Bayern: 'Bayern Munich'
+        Schalke: 'Schalke 04'
+        Werder: 'Werder Bremen'
     SerieA:
         Inter: "Inter"
         Verona: "Verona"
@@ -78,6 +83,9 @@ teams_names_dict :
         Salernitana: "Salernitana"
         Venezia: "Venezia"
         Spezia: "Spezia"
+        Lecce: "Lecce"
+        Monza: "Monza"
+        Cremonese: "Cremonese"
     LaLiga:
         Valencia: "Valencia"
         Cadiz: "Cadiz"
@@ -99,26 +107,32 @@ teams_names_dict :
         Getafe: "Getafe"
         R. Vallecano: "Vallecano"
         Real Madryt: "Real Madrid"
+        Almeria: "Almeria"
+        Valladolid: "Valladolid"
+        Girona: "Girona"
     Ligue1 :
-        Monaco: Monaco
-        Lyon: Lyon
-        Troyes: Troyes
-        Rennes: Rennes
-        Bordeaux: Bordeaux
-        Nice: Nice
-        St. Etienne: St Etienne
-        Strasbourg: Strasbourg
-        Metz: Metz
-        Montpellier: Montpellier
-        Lorient: Lorient
-        Lille: Lille
-        PSG: Paris SG
-        Angers: Angers
-        Brest: Brest
-        Clermont: Clermont
-        Nantes: Nantes
-        Reims: Reims
-        Lens: Lens
-        Marsylia: Marseille
+        Monaco: 'Monaco'
+        Lyon: 'Lyon'
+        Troyes: 'Troyes'
+        Rennes: 'Rennes'
+        Bordeaux: 'Bordeaux'
+        Nice: 'Nice'
+        St. Etienne: 'St Etienne'
+        Strasbourg: 'Strasbourg'
+        Metz: 'Metz'
+        Montpellier: 'Montpellier'
+        Lorient: 'Lorient'
+        Lille: 'Lille'
+        PSG: 'Paris SG'
+        Angers: 'Angers'
+        Brest: 'Brest'
+        Clermont: 'Clermont'
+        Nantes: 'Nantes'
+        Reims: 'Reims'
+        Lens: 'Lens'
+        Marsylia: 'Marseille'
+        Toulouse: 'Toulouse'
+        Ajaccio: 'Ajaccio'
+        Auxerre: 'Auxerre'
 
 

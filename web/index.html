@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <title>Blugoon HTML Bootstrap 4 Template</title>
+    <title>FOOTBALL PREDICTIONS</title>
     <meta name="description" content="" />
     <meta name="author" content="Tooplate" />
     <!-- Bootstrap core CSS -->
@@ -28,7 +28,14 @@
             </div>
             <div class="author-content">
               <h4>FOOTBALL PREDICTIONS</h4>
-              <span>M.SOCZI</span>
+              <span>M.SOCZI
+                <br>
+                Last update:
+                <script>
+                let text = document.lastModified;
+                document.write(new Date(document.lastModified).toLocaleDateString());
+                </script>
+              </span>
             </div>
             <nav class="main-nav" role="navigation">
               <ul class="main-menu">
@@ -38,6 +45,7 @@
                 <li><a href="#section4">Serie A</a></li>
                 <li><a href="#section5">LaLiga</a></li>
                 <li><a href="#section6">Ligue 1</a></li>
+                <li><a href="#section7">Model Performance</a></li>
               </ul>
             </nav>
             <!--
@@ -62,8 +70,10 @@
             </div>
             -->
             <div class="copyright-text">
-              <p>Copyright 2021 Mateusz Soczewka<br>
-              Design: Mateusz Soczewka</p>
+              <p>
+              Copyright 2021 Mateusz Soczewka<br>
+              Design: Mateusz Soczewka
+              </p>
             </div>
           </div>
         </div>
@@ -79,7 +89,7 @@
             <h2>About project</h2>
             <div class="line-dec"></div>
             <span>
-            On this page you will find predictions of the results of the leading European leagues.<br>
+            On this page you will find forecasts for the top European football leagues.<br>
             More info on <a href="https://github.com/msoczi/football_predictions">GitHub</a>.</span>
           </div>
         </div>
@@ -93,199 +103,271 @@
         <!-- PremierLeague -->
 <table border="1" class="dataframe content-table">
   <thead>
-    <tr style="text-align: right;">
+    <tr style="text-align: center;">
       <th>Date</th>
-      <th>H - odds</th>
-      <th>HomeTeam</th>
-      <th>D - odds</th>
-      <th>AwayTeam</th>
-      <th>A - odds</th>
-      <th>prob H</th>
-      <th>prob D</th>
-      <th>prob A</th>
+      <th>H-odds</th>
+      <th>Home</th>
+      <th>D-odds</th>
+      <th>Away</th>
+      <th>A-odds</th>
+      <th>P(H)</th>
+      <th>P(D)</th>
+      <th>P(A)</th>
       <th>Prediction</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>2022-05-16</td>
-      <td>4.65</td>
-      <td>Newcastle</td>
-      <td>3.80</td>
-      <td>Arsenal</td>
-      <td>1.75</td>
-      <td>0.2279</td>
-      <td>0.1777</td>
-      <td>0.5944</td>
-      <td>A</td>
-    </tr>
-    <tr>
-      <td>2022-05-17</td>
-      <td>6.60</td>
-      <td>Southampton</td>
-      <td>5.15</td>
+      <td>2022-08-22</td>
+      <td>4.75</td>
+      <td>Man. Utd</td>
+      <td>4.15</td>
       <td>Liverpool</td>
-      <td>1.42</td>
-      <td>0.1538</td>
-      <td>0.1768</td>
-      <td>0.6694</td>
+      <td>1.67</td>
+      <td>0.30</td>
+      <td>0.27</td>
+      <td>0.43</td>
+      <td>D</td>
+    </tr>
+    <tr>
+      <td>2022-08-27</td>
+      <td>3.65</td>
+      <td>Southampton</td>
+      <td>3.70</td>
+      <td>Man. Utd</td>
+      <td>1.92</td>
+      <td>0.49</td>
+      <td>0.25</td>
+      <td>0.26</td>
+      <td>H</td>
+    </tr>
+    <tr>
+      <td>2022-08-27</td>
+      <td>1.10</td>
+      <td>Liverpool</td>
+      <td>9.75</td>
+      <td>Bournemouth</td>
+      <td>26.00</td>
+      <td>0.59</td>
+      <td>0.25</td>
+      <td>0.16</td>
+      <td>H</td>
+    </tr>
+    <tr>
+      <td>2022-08-27</td>
+      <td>1.16</td>
+      <td>Man. City</td>
+      <td>7.90</td>
+      <td>Crystal Palace</td>
+      <td>16.00</td>
+      <td>0.70</td>
+      <td>0.19</td>
+      <td>0.11</td>
+      <td>H</td>
+    </tr>
+    <tr>
+      <td>2022-08-27</td>
+      <td>2.01</td>
+      <td>Brentford</td>
+      <td>3.35</td>
+      <td>Everton</td>
+      <td>3.70</td>
+      <td>0.52</td>
+      <td>0.22</td>
+      <td>0.27</td>
+      <td>H</td>
+    </tr>
+    <tr>
+      <td>2022-08-27</td>
+      <td>1.37</td>
+      <td>Chelsea</td>
+      <td>4.95</td>
+      <td>Leicester</td>
+      <td>7.95</td>
+      <td>0.52</td>
+      <td>0.25</td>
+      <td>0.23</td>
+      <td>H</td>
+    </tr>
+    <tr>
+      <td>2022-08-27</td>
+      <td>1.87</td>
+      <td>Brighton</td>
+      <td>3.55</td>
+      <td>Leeds</td>
+      <td>4.00</td>
+      <td>0.45</td>
+      <td>0.19</td>
+      <td>0.36</td>
       <td>A</td>
     </tr>
     <tr>
-      <td>2022-05-19</td>
-      <td>1.96</td>
+      <td>2022-08-27</td>
+      <td>1.32</td>
+      <td>Arsenal</td>
+      <td>5.50</td>
+      <td>Fulham</td>
+      <td>8.65</td>
+      <td>0.55</td>
+      <td>0.22</td>
+      <td>0.23</td>
+      <td>H</td>
+    </tr>
+    <tr>
+      <td>2022-08-28</td>
+      <td>2.22</td>
+      <td>Aston Villa</td>
+      <td>3.25</td>
+      <td>West Ham</td>
+      <td>3.20</td>
+      <td>0.42</td>
+      <td>0.23</td>
+      <td>0.34</td>
+      <td>A</td>
+    </tr>
+    <tr>
+      <td>2022-08-28</td>
+      <td>2.80</td>
+      <td>Wolverhampton</td>
+      <td>3.15</td>
+      <td>Newcastle</td>
+      <td>2.55</td>
+      <td>0.24</td>
+      <td>0.30</td>
+      <td>0.46</td>
+      <td>D</td>
+    </tr>
+    <tr>
+      <td>2022-08-28</td>
+      <td>6.55</td>
+      <td>Nottingham</td>
+      <td>4.45</td>
+      <td>Tottenham</td>
+      <td>1.45</td>
+      <td>0.24</td>
+      <td>0.27</td>
+      <td>0.50</td>
+      <td>D</td>
+    </tr>
+    <tr>
+      <td>2022-08-30</td>
+      <td>2.14</td>
+      <td>Crystal Palace</td>
+      <td>3.30</td>
+      <td>Brentford</td>
+      <td>3.35</td>
+      <td>0.45</td>
+      <td>0.25</td>
+      <td>0.30</td>
+      <td>H</td>
+    </tr>
+    <tr>
+      <td>2022-08-30</td>
+      <td>2.90</td>
+      <td>Fulham</td>
+      <td>3.20</td>
+      <td>Brighton</td>
+      <td>2.44</td>
+      <td>0.45</td>
+      <td>0.31</td>
+      <td>0.24</td>
+      <td>D</td>
+    </tr>
+    <tr>
+      <td>2022-08-30</td>
+      <td>5.15</td>
+      <td>Southampton</td>
+      <td>4.00</td>
+      <td>Chelsea</td>
+      <td>1.61</td>
+      <td>0.44</td>
+      <td>0.26</td>
+      <td>0.30</td>
+      <td>H</td>
+    </tr>
+    <tr>
+      <td>2022-08-30</td>
+      <td>2.10</td>
+      <td>Leeds</td>
+      <td>3.40</td>
       <td>Everton</td>
       <td>3.35</td>
-      <td>Crystal Palace</td>
-      <td>3.80</td>
-      <td>0.3734</td>
-      <td>0.2448</td>
-      <td>0.3818</td>
-      <td>A</td>
-    </tr>
-    <tr>
-      <td>2022-05-19</td>
-      <td>1.38</td>
-      <td>Chelsea</td>
-      <td>4.90</td>
-      <td>Leicester</td>
-      <td>7.75</td>
-      <td>0.7227</td>
-      <td>0.1622</td>
-      <td>0.1151</td>
+      <td>0.64</td>
+      <td>0.17</td>
+      <td>0.19</td>
       <td>H</td>
     </tr>
     <tr>
-      <td>2022-05-19</td>
-      <td>2.09</td>
-      <td>Aston Villa</td>
-      <td>3.30</td>
-      <td>Burnley</td>
-      <td>3.50</td>
-      <td>0.5194</td>
-      <td>0.2550</td>
-      <td>0.2256</td>
-      <td>H</td>
-    </tr>
-    <tr>
-      <td>2022-05-22</td>
-      <td>1.53</td>
-      <td>Arsenal</td>
-      <td>4.35</td>
-      <td>Everton</td>
-      <td>5.50</td>
-      <td>0.6546</td>
-      <td>0.2118</td>
-      <td>0.1335</td>
-      <td>H</td>
-    </tr>
-    <tr>
-      <td>2022-05-22</td>
-      <td>1.96</td>
-      <td>Leicester</td>
-      <td>3.60</td>
-      <td>Southampton</td>
-      <td>3.55</td>
-      <td>0.5025</td>
-      <td>0.2828</td>
-      <td>0.2147</td>
-      <td>D</td>
-    </tr>
-    <tr>
-      <td>2022-05-22</td>
-      <td>2.50</td>
-      <td>Brighton</td>
-      <td>3.30</td>
-      <td>West Ham</td>
-      <td>2.75</td>
-      <td>0.5203</td>
-      <td>0.2492</td>
-      <td>0.2305</td>
-      <td>H</td>
-    </tr>
-    <tr>
-      <td>2022-05-22</td>
-      <td>3.00</td>
-      <td>Crystal Palace</td>
-      <td>3.40</td>
-      <td>Man. Utd</td>
-      <td>2.27</td>
-      <td>0.4860</td>
-      <td>0.2803</td>
-      <td>0.2336</td>
-      <td>D</td>
-    </tr>
-    <tr>
-      <td>2022-05-22</td>
-      <td>1.17</td>
-      <td>Chelsea</td>
-      <td>7.35</td>
-      <td>Watford</td>
-      <td>16.50</td>
-      <td>0.7617</td>
-      <td>0.1524</td>
-      <td>0.0859</td>
-      <td>H</td>
-    </tr>
-    <tr>
-      <td>2022-05-22</td>
-      <td>2.39</td>
-      <td>Burnley</td>
+      <td>2022-08-31</td>
+      <td>2.85</td>
+      <td>Bournemouth</td>
       <td>3.20</td>
-      <td>Newcastle</td>
-      <td>2.95</td>
-      <td>0.4501</td>
-      <td>0.2260</td>
-      <td>0.3239</td>
-      <td>A</td>
-    </tr>
-    <tr>
-      <td>2022-05-22</td>
-      <td>2.32</td>
-      <td>Brentford</td>
-      <td>3.40</td>
-      <td>Leeds</td>
-      <td>2.90</td>
-      <td>0.5863</td>
-      <td>0.2139</td>
-      <td>0.1998</td>
-      <td>H</td>
-    </tr>
-    <tr>
-      <td>2022-05-22</td>
-      <td>1.19</td>
-      <td>Man. City</td>
-      <td>7.15</td>
-      <td>Aston Villa</td>
-      <td>14.25</td>
-      <td>0.7322</td>
-      <td>0.1512</td>
-      <td>0.1166</td>
-      <td>H</td>
-    </tr>
-    <tr>
-      <td>2022-05-22</td>
-      <td>12.50</td>
-      <td>Norwich</td>
-      <td>6.55</td>
-      <td>Tottenham</td>
-      <td>1.22</td>
-      <td>0.2117</td>
-      <td>0.2851</td>
-      <td>0.5033</td>
-      <td>A</td>
-    </tr>
-    <tr>
-      <td>2022-05-22</td>
-      <td>1.20</td>
-      <td>Liverpool</td>
-      <td>6.75</td>
       <td>Wolverhampton</td>
-      <td>13.25</td>
-      <td>0.7474</td>
-      <td>0.1656</td>
-      <td>0.0870</td>
+      <td>2.49</td>
+      <td>0.33</td>
+      <td>0.28</td>
+      <td>0.39</td>
+      <td>D</td>
+    </tr>
+    <tr>
+      <td>2022-08-31</td>
+      <td>1.07</td>
+      <td>Man. City</td>
+      <td>11.75</td>
+      <td>Nottingham</td>
+      <td>34.00</td>
+      <td>0.75</td>
+      <td>0.16</td>
+      <td>0.09</td>
       <td>H</td>
+    </tr>
+    <tr>
+      <td>2022-08-31</td>
+      <td>1.41</td>
+      <td>Arsenal</td>
+      <td>4.70</td>
+      <td>Aston Villa</td>
+      <td>7.05</td>
+      <td>0.72</td>
+      <td>0.16</td>
+      <td>0.12</td>
+      <td>H</td>
+    </tr>
+    <tr>
+      <td>2022-08-31</td>
+      <td>3.60</td>
+      <td>West Ham</td>
+      <td>3.55</td>
+      <td>Tottenham</td>
+      <td>1.97</td>
+      <td>0.21</td>
+      <td>0.23</td>
+      <td>0.56</td>
+      <td>A</td>
+    </tr>
+    <tr>
+      <td>2022-08-31</td>
+      <td>1.37</td>
+      <td>Liverpool</td>
+      <td>5.10</td>
+      <td>Newcastle</td>
+      <td>7.85</td>
+      <td>0.31</td>
+      <td>0.34</td>
+      <td>0.35</td>
+      <td>D</td>
+    </tr>
+    <tr>
+      <td>2022-09-01</td>
+      <td>3.05</td>
+      <td>Leicester</td>
+      <td>3.50</td>
+      <td>Man. Utd</td>
+      <td>2.21</td>
+      <td>0.41</td>
+      <td>0.27</td>
+      <td>0.32</td>
+      <td>D</td>
     </tr>
   </tbody>
 </table>
@@ -303,235 +385,235 @@
         <!-- Bundesliga -->
 <table border="1" class="dataframe content-table">
   <thead>
-    <tr style="text-align: right;">
+    <tr style="text-align: center;">
       <th>Date</th>
-      <th>H - odds</th>
-      <th>HomeTeam</th>
-      <th>D - odds</th>
-      <th>AwayTeam</th>
-      <th>A - odds</th>
-      <th>prob H</th>
-      <th>prob D</th>
-      <th>prob A</th>
+      <th>H-odds</th>
+      <th>Home</th>
+      <th>D-odds</th>
+      <th>Away</th>
+      <th>A-odds</th>
+      <th>P(H)</th>
+      <th>P(D)</th>
+      <th>P(A)</th>
       <th>Prediction</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>2022-05-06</td>
-      <td>2.20</td>
-      <td>Bochum</td>
-      <td>3.45</td>
-      <td>Bielefeld</td>
-      <td>3.25</td>
-      <td>0.5143</td>
-      <td>0.2460</td>
-      <td>0.2397</td>
-      <td>H</td>
-    </tr>
-    <tr>
-      <td>2022-05-07</td>
-      <td>3.15</td>
-      <td>Hoffenheim</td>
-      <td>4.10</td>
-      <td>Leverkusen</td>
-      <td>2.05</td>
-      <td>0.2845</td>
-      <td>0.2563</td>
-      <td>0.4593</td>
-      <td>A</td>
-    </tr>
-    <tr>
-      <td>2022-05-07</td>
-      <td>8.80</td>
-      <td>Gr. Furth</td>
-      <td>5.60</td>
-      <td>Dortmund</td>
-      <td>1.32</td>
-      <td>0.1954</td>
-      <td>0.2222</td>
-      <td>0.5824</td>
-      <td>A</td>
-    </tr>
-    <tr>
-      <td>2022-05-07</td>
-      <td>1.60</td>
-      <td>FC Koeln</td>
-      <td>4.30</td>
-      <td>Wolfsburg</td>
-      <td>4.80</td>
-      <td>0.5953</td>
-      <td>0.1998</td>
-      <td>0.2049</td>
-      <td>H</td>
-    </tr>
-    <tr>
-      <td>2022-05-07</td>
-      <td>1.90</td>
+      <td>2022-08-26</td>
+      <td>1.53</td>
       <td>Freiburg</td>
-      <td>3.60</td>
-      <td>Union Berlin</td>
-      <td>3.80</td>
-      <td>0.5107</td>
-      <td>0.2373</td>
-      <td>0.2520</td>
+      <td>4.35</td>
+      <td>Bochum</td>
+      <td>5.50</td>
+      <td>0.66</td>
+      <td>0.18</td>
+      <td>0.16</td>
       <td>H</td>
     </tr>
     <tr>
-      <td>2022-05-07</td>
-      <td>2.48</td>
-      <td>Hertha</td>
-      <td>3.35</td>
-      <td>Mainz</td>
+      <td>2022-08-27</td>
       <td>2.75</td>
-      <td>0.3423</td>
-      <td>0.2564</td>
-      <td>0.4013</td>
+      <td>Mainz</td>
+      <td>3.60</td>
+      <td>Leverkusen</td>
+      <td>2.37</td>
+      <td>0.58</td>
+      <td>0.19</td>
+      <td>0.23</td>
+      <td>H</td>
+    </tr>
+    <tr>
+      <td>2022-08-27</td>
+      <td>1.48</td>
+      <td>RB Lipsk</td>
+      <td>4.60</td>
+      <td>Wolfsburg</td>
+      <td>5.85</td>
+      <td>0.52</td>
+      <td>0.30</td>
+      <td>0.19</td>
+      <td>D</td>
+    </tr>
+    <tr>
+      <td>2022-08-27</td>
+      <td>3.00</td>
+      <td>Schalke</td>
+      <td>3.40</td>
+      <td>Union Berlin</td>
+      <td>2.27</td>
+      <td>0.18</td>
+      <td>0.22</td>
+      <td>0.60</td>
       <td>A</td>
     </tr>
     <tr>
-      <td>2022-05-08</td>
-      <td>2.24</td>
-      <td>Ein. Frankfurt</td>
-      <td>3.75</td>
-      <td>Moenchengladbach</td>
-      <td>2.85</td>
-      <td>0.3303</td>
-      <td>0.2374</td>
-      <td>0.4323</td>
+      <td>2022-08-27</td>
+      <td>1.50</td>
+      <td>Hoffenheim</td>
+      <td>4.60</td>
+      <td>Augsburg</td>
+      <td>5.55</td>
+      <td>0.69</td>
+      <td>0.18</td>
+      <td>0.13</td>
+      <td>H</td>
+    </tr>
+    <tr>
+      <td>2022-08-27</td>
+      <td>4.10</td>
+      <td>Hertha</td>
+      <td>4.15</td>
+      <td>Dortmund</td>
+      <td>1.72</td>
+      <td>0.27</td>
+      <td>0.22</td>
+      <td>0.51</td>
       <td>A</td>
     </tr>
     <tr>
-      <td>2022-05-08</td>
+      <td>2022-08-27</td>
       <td>1.27</td>
       <td>Bayern</td>
-      <td>6.25</td>
-      <td>Stuttgart</td>
-      <td>9.75</td>
-      <td>0.6913</td>
-      <td>0.1902</td>
-      <td>0.1185</td>
-      <td>H</td>
+      <td>6.65</td>
+      <td>Moenchengladbach</td>
+      <td>8.75</td>
+      <td>0.46</td>
+      <td>0.21</td>
+      <td>0.33</td>
+      <td>A</td>
     </tr>
     <tr>
-      <td>2022-05-08</td>
-      <td>1.27</td>
-      <td>RB Lipsk</td>
-      <td>6.00</td>
-      <td>Augsburg</td>
-      <td>10.50</td>
-      <td>0.7209</td>
-      <td>0.1773</td>
-      <td>0.1018</td>
-      <td>H</td>
-    </tr>
-    <tr>
-      <td>2022-05-14</td>
-      <td>1.89</td>
-      <td>Leverkusen</td>
-      <td>3.70</td>
-      <td>Freiburg</td>
-      <td>3.75</td>
-      <td>0.5009</td>
-      <td>0.2055</td>
-      <td>0.2936</td>
-      <td>H</td>
-    </tr>
-    <tr>
-      <td>2022-05-14</td>
-      <td>1.55</td>
-      <td>Augsburg</td>
-      <td>4.30</td>
-      <td>Gr. Furth</td>
-      <td>5.30</td>
-      <td>0.5118</td>
-      <td>0.2559</td>
-      <td>0.2323</td>
-      <td>H</td>
-    </tr>
-    <tr>
-      <td>2022-05-14</td>
-      <td>1.29</td>
-      <td>Dortmund</td>
-      <td>6.20</td>
-      <td>Hertha</td>
-      <td>8.65</td>
-      <td>0.7045</td>
-      <td>0.1510</td>
-      <td>0.1445</td>
-      <td>H</td>
-    </tr>
-    <tr>
-      <td>2022-05-14</td>
-      <td>2.49</td>
-      <td>Stuttgart</td>
-      <td>3.55</td>
+      <td>2022-08-28</td>
+      <td>2.06</td>
       <td>FC Koeln</td>
-      <td>2.60</td>
-      <td>0.2299</td>
-      <td>0.2134</td>
-      <td>0.5567</td>
-      <td>A</td>
-    </tr>
-    <tr>
-      <td>2022-05-14</td>
-      <td>1.61</td>
-      <td>Union Berlin</td>
-      <td>4.00</td>
-      <td>Bochum</td>
-      <td>5.15</td>
-      <td>0.6698</td>
-      <td>0.1927</td>
-      <td>0.1375</td>
+      <td>3.55</td>
+      <td>Stuttgart</td>
+      <td>3.35</td>
+      <td>0.57</td>
+      <td>0.26</td>
+      <td>0.17</td>
       <td>H</td>
     </tr>
     <tr>
-      <td>2022-05-14</td>
-      <td>5.90</td>
-      <td>Bielefeld</td>
-      <td>4.55</td>
-      <td>RB Lipsk</td>
-      <td>1.48</td>
-      <td>0.1920</td>
-      <td>0.2916</td>
-      <td>0.5164</td>
-      <td>A</td>
-    </tr>
-    <tr>
-      <td>2022-05-14</td>
-      <td>2.05</td>
-      <td>Mainz</td>
+      <td>2022-08-28</td>
+      <td>2.50</td>
+      <td>Werder</td>
       <td>3.50</td>
       <td>Ein. Frankfurt</td>
-      <td>3.40</td>
-      <td>0.5124</td>
-      <td>0.2737</td>
-      <td>0.2139</td>
+      <td>2.60</td>
+      <td>0.59</td>
+      <td>0.26</td>
+      <td>0.15</td>
       <td>H</td>
     </tr>
     <tr>
-      <td>2022-05-14</td>
-      <td>5.70</td>
-      <td>Wolfsburg</td>
-      <td>5.10</td>
-      <td>Bayern</td>
-      <td>1.44</td>
-      <td>0.1961</td>
-      <td>0.2150</td>
-      <td>0.5889</td>
+      <td>2022-09-02</td>
+      <td>1.62</td>
+      <td>Dortmund</td>
+      <td>4.40</td>
+      <td>Hoffenheim</td>
+      <td>4.55</td>
+      <td>0.52</td>
+      <td>0.21</td>
+      <td>0.27</td>
+      <td>H</td>
+    </tr>
+    <tr>
+      <td>2022-09-03</td>
+      <td>1.94</td>
+      <td>Leverkusen</td>
+      <td>3.65</td>
+      <td>Freiburg</td>
+      <td>3.60</td>
+      <td>0.28</td>
+      <td>0.22</td>
+      <td>0.50</td>
       <td>A</td>
     </tr>
     <tr>
-      <td>2022-05-14</td>
-      <td>2.47</td>
-      <td>Moenchengladbach</td>
-      <td>3.65</td>
-      <td>Hoffenheim</td>
-      <td>2.60</td>
-      <td>0.4757</td>
-      <td>0.2827</td>
-      <td>0.2416</td>
+      <td>2022-09-03</td>
+      <td>7.10</td>
+      <td>Union Berlin</td>
+      <td>5.30</td>
+      <td>Bayern</td>
+      <td>1.37</td>
+      <td>0.33</td>
+      <td>0.22</td>
+      <td>0.45</td>
+      <td>A</td>
+    </tr>
+    <tr>
+      <td>2022-09-03</td>
+      <td>1.87</td>
+      <td>Stuttgart</td>
+      <td>3.70</td>
+      <td>Schalke</td>
+      <td>3.80</td>
+      <td>0.49</td>
+      <td>0.27</td>
+      <td>0.24</td>
+      <td>H</td>
+    </tr>
+    <tr>
+      <td>2022-09-03</td>
+      <td>2.75</td>
+      <td>Bochum</td>
+      <td>3.40</td>
+      <td>Werder</td>
+      <td>2.44</td>
+      <td>0.22</td>
+      <td>0.27</td>
+      <td>0.51</td>
+      <td>A</td>
+    </tr>
+    <tr>
+      <td>2022-09-03</td>
+      <td>2.32</td>
+      <td>Wolfsburg</td>
+      <td>3.40</td>
+      <td>FC Koeln</td>
+      <td>2.95</td>
+      <td>0.15</td>
+      <td>0.18</td>
+      <td>0.67</td>
+      <td>A</td>
+    </tr>
+    <tr>
+      <td>2022-09-03</td>
+      <td>3.40</td>
+      <td>Ein. Frankfurt</td>
+      <td>3.55</td>
+      <td>RB Lipsk</td>
+      <td>2.04</td>
+      <td>0.23</td>
+      <td>0.27</td>
+      <td>0.51</td>
       <td>D</td>
+    </tr>
+    <tr>
+      <td>2022-09-04</td>
+      <td>2.43</td>
+      <td>Augsburg</td>
+      <td>3.35</td>
+      <td>Hertha</td>
+      <td>2.80</td>
+      <td>0.42</td>
+      <td>0.25</td>
+      <td>0.33</td>
+      <td>A</td>
+    </tr>
+    <tr>
+      <td>2022-09-04</td>
+      <td>2.16</td>
+      <td>Moenchengladbach</td>
+      <td>3.60</td>
+      <td>Mainz</td>
+      <td>3.05</td>
+      <td>0.56</td>
+      <td>0.22</td>
+      <td>0.22</td>
+      <td>H</td>
     </tr>
   </tbody>
 </table>
@@ -549,151 +631,367 @@
         <!-- SerieA -->
 <table border="1" class="dataframe content-table">
   <thead>
-    <tr style="text-align: right;">
+    <tr style="text-align: center;">
       <th>Date</th>
-      <th>H - odds</th>
-      <th>HomeTeam</th>
-      <th>D - odds</th>
-      <th>AwayTeam</th>
-      <th>A - odds</th>
-      <th>prob H</th>
-      <th>prob D</th>
-      <th>prob A</th>
+      <th>H-odds</th>
+      <th>Home</th>
+      <th>D-odds</th>
+      <th>Away</th>
+      <th>A-odds</th>
+      <th>P(H)</th>
+      <th>P(D)</th>
+      <th>P(A)</th>
       <th>Prediction</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>2022-05-16</td>
-      <td>2.20</td>
-      <td>Juventus</td>
-      <td>3.50</td>
-      <td>Lazio</td>
-      <td>3.25</td>
-      <td>0.5231</td>
-      <td>0.2020</td>
-      <td>0.2748</td>
-      <td>H</td>
-    </tr>
-    <tr>
-      <td>2022-05-20</td>
-      <td>3.40</td>
-      <td>Torino</td>
-      <td>3.45</td>
+      <td>2022-08-22</td>
+      <td>1.28</td>
       <td>Roma</td>
-      <td>2.06</td>
-      <td>0.3769</td>
-      <td>0.2989</td>
-      <td>0.3242</td>
-      <td>D</td>
-    </tr>
-    <tr>
-      <td>2022-05-21</td>
-      <td>2.37</td>
-      <td>Genoa</td>
-      <td>3.35</td>
-      <td>Bologna</td>
-      <td>2.90</td>
-      <td>0.4120</td>
-      <td>0.2646</td>
-      <td>0.3234</td>
-      <td>D</td>
-    </tr>
-    <tr>
-      <td>2022-05-21</td>
-      <td>1.88</td>
-      <td>Fiorentina</td>
-      <td>3.60</td>
-      <td>Juventus</td>
-      <td>3.90</td>
-      <td>0.3390</td>
-      <td>0.2298</td>
-      <td>0.4312</td>
-      <td>A</td>
-    </tr>
-    <tr>
-      <td>2022-05-21</td>
-      <td>1.63</td>
-      <td>Lazio</td>
-      <td>4.05</td>
-      <td>Verona</td>
-      <td>4.85</td>
-      <td>0.5947</td>
-      <td>0.1995</td>
-      <td>0.2058</td>
+      <td>5.60</td>
+      <td>Cremonese</td>
+      <td>11.00</td>
+      <td>0.57</td>
+      <td>0.17</td>
+      <td>0.26</td>
       <td>H</td>
     </tr>
     <tr>
-      <td>2022-05-21</td>
-      <td>1.23</td>
-      <td>Atalanta</td>
-      <td>6.80</td>
-      <td>Empoli</td>
-      <td>10.50</td>
-      <td>0.6568</td>
-      <td>0.2242</td>
-      <td>0.1190</td>
-      <td>H</td>
-    </tr>
-    <tr>
-      <td>2022-05-22</td>
-      <td>5.10</td>
-      <td>Spezia</td>
-      <td>4.45</td>
-      <td>Napoli</td>
-      <td>1.56</td>
-      <td>0.1820</td>
-      <td>0.2211</td>
-      <td>0.5968</td>
-      <td>A</td>
-    </tr>
-    <tr>
-      <td>2022-05-22</td>
-      <td>6.00</td>
-      <td>Sassuolo</td>
-      <td>4.80</td>
-      <td>Milan</td>
-      <td>1.45</td>
-      <td>0.2397</td>
-      <td>0.2178</td>
-      <td>0.5425</td>
-      <td>A</td>
-    </tr>
-    <tr>
-      <td>2022-05-22</td>
-      <td>1.12</td>
-      <td>Inter</td>
-      <td>9.30</td>
+      <td>2022-08-22</td>
+      <td>5.95</td>
       <td>Sampdoria</td>
-      <td>20.50</td>
-      <td>0.7518</td>
-      <td>0.1564</td>
-      <td>0.0917</td>
-      <td>H</td>
+      <td>3.90</td>
+      <td>Juventus</td>
+      <td>1.60</td>
+      <td>0.32</td>
+      <td>0.22</td>
+      <td>0.45</td>
+      <td>A</td>
     </tr>
     <tr>
-      <td>2022-05-22</td>
-      <td>4.70</td>
-      <td>Venezia</td>
-      <td>3.85</td>
-      <td>Cagliari</td>
-      <td>1.68</td>
-      <td>0.3765</td>
-      <td>0.3181</td>
-      <td>0.3054</td>
+      <td>2022-08-26</td>
+      <td>2.70</td>
+      <td>Monza</td>
+      <td>3.25</td>
+      <td>Udinese</td>
+      <td>2.60</td>
+      <td>0.41</td>
+      <td>0.29</td>
+      <td>0.29</td>
       <td>D</td>
     </tr>
     <tr>
-      <td>2022-05-22</td>
-      <td>1.66</td>
-      <td>Salernitana</td>
-      <td>3.95</td>
-      <td>Udinese</td>
-      <td>4.70</td>
-      <td>0.3827</td>
-      <td>0.2359</td>
-      <td>0.3814</td>
+      <td>2022-08-26</td>
+      <td>3.70</td>
+      <td>Lazio</td>
+      <td>3.70</td>
+      <td>Inter</td>
+      <td>1.90</td>
+      <td>0.28</td>
+      <td>0.23</td>
+      <td>0.49</td>
       <td>A</td>
+    </tr>
+    <tr>
+      <td>2022-08-27</td>
+      <td>2.26</td>
+      <td>Juventus</td>
+      <td>3.20</td>
+      <td>Roma</td>
+      <td>3.20</td>
+      <td>0.33</td>
+      <td>0.20</td>
+      <td>0.47</td>
+      <td>A</td>
+    </tr>
+    <tr>
+      <td>2022-08-27</td>
+      <td>3.00</td>
+      <td>Cremonese</td>
+      <td>3.30</td>
+      <td>Torino</td>
+      <td>2.31</td>
+      <td>0.30</td>
+      <td>0.28</td>
+      <td>0.42</td>
+      <td>D</td>
+    </tr>
+    <tr>
+      <td>2022-08-27</td>
+      <td>2.95</td>
+      <td>Spezia</td>
+      <td>3.35</td>
+      <td>Sassuolo</td>
+      <td>2.31</td>
+      <td>0.26</td>
+      <td>0.26</td>
+      <td>0.48</td>
+      <td>A</td>
+    </tr>
+    <tr>
+      <td>2022-08-27</td>
+      <td>1.36</td>
+      <td>Milan</td>
+      <td>5.10</td>
+      <td>Bologna</td>
+      <td>7.85</td>
+      <td>0.74</td>
+      <td>0.15</td>
+      <td>0.12</td>
+      <td>H</td>
+    </tr>
+    <tr>
+      <td>2022-08-28</td>
+      <td>2.37</td>
+      <td>Salernitana</td>
+      <td>3.15</td>
+      <td>Sampdoria</td>
+      <td>3.05</td>
+      <td>0.38</td>
+      <td>0.27</td>
+      <td>0.35</td>
+      <td>D</td>
+    </tr>
+    <tr>
+      <td>2022-08-28</td>
+      <td>3.60</td>
+      <td>Verona</td>
+      <td>3.70</td>
+      <td>Atalanta</td>
+      <td>1.92</td>
+      <td>0.31</td>
+      <td>0.29</td>
+      <td>0.40</td>
+      <td>D</td>
+    </tr>
+    <tr>
+      <td>2022-08-28</td>
+      <td>3.10</td>
+      <td>Fiorentina</td>
+      <td>3.40</td>
+      <td>Napoli</td>
+      <td>2.24</td>
+      <td>0.42</td>
+      <td>0.20</td>
+      <td>0.38</td>
+      <td>A</td>
+    </tr>
+    <tr>
+      <td>2022-08-28</td>
+      <td>2.45</td>
+      <td>Lecce</td>
+      <td>3.30</td>
+      <td>Empoli</td>
+      <td>2.80</td>
+      <td>0.34</td>
+      <td>0.32</td>
+      <td>0.34</td>
+      <td>D</td>
+    </tr>
+    <tr>
+      <td>2022-08-30</td>
+      <td>5.05</td>
+      <td>Sassuolo</td>
+      <td>4.10</td>
+      <td>Milan</td>
+      <td>1.60</td>
+      <td>0.25</td>
+      <td>0.20</td>
+      <td>0.55</td>
+      <td>A</td>
+    </tr>
+    <tr>
+      <td>2022-08-30</td>
+      <td>1.26</td>
+      <td>Roma</td>
+      <td>5.80</td>
+      <td>Monza</td>
+      <td>11.50</td>
+      <td>0.64</td>
+      <td>0.18</td>
+      <td>0.18</td>
+      <td>H</td>
+    </tr>
+    <tr>
+      <td>2022-08-30</td>
+      <td>1.20</td>
+      <td>Inter</td>
+      <td>6.90</td>
+      <td>Cremonese</td>
+      <td>13.75</td>
+      <td>0.74</td>
+      <td>0.13</td>
+      <td>0.13</td>
+      <td>H</td>
+    </tr>
+    <tr>
+      <td>2022-08-31</td>
+      <td>3.60</td>
+      <td>Sampdoria</td>
+      <td>3.65</td>
+      <td>Lazio</td>
+      <td>1.94</td>
+      <td>0.29</td>
+      <td>0.29</td>
+      <td>0.42</td>
+      <td>D</td>
+    </tr>
+    <tr>
+      <td>2022-08-31</td>
+      <td>2.95</td>
+      <td>Udinese</td>
+      <td>3.50</td>
+      <td>Fiorentina</td>
+      <td>2.26</td>
+      <td>0.17</td>
+      <td>0.24</td>
+      <td>0.58</td>
+      <td>A</td>
+    </tr>
+    <tr>
+      <td>2022-08-31</td>
+      <td>2.75</td>
+      <td>Empoli</td>
+      <td>3.25</td>
+      <td>Verona</td>
+      <td>2.55</td>
+      <td>0.41</td>
+      <td>0.24</td>
+      <td>0.36</td>
+      <td>A</td>
+    </tr>
+    <tr>
+      <td>2022-08-31</td>
+      <td>1.29</td>
+      <td>Juventus</td>
+      <td>5.70</td>
+      <td>Spezia</td>
+      <td>9.55</td>
+      <td>0.59</td>
+      <td>0.20</td>
+      <td>0.21</td>
+      <td>H</td>
+    </tr>
+    <tr>
+      <td>2022-08-31</td>
+      <td>1.28</td>
+      <td>Napoli</td>
+      <td>5.75</td>
+      <td>Lecce</td>
+      <td>10.00</td>
+      <td>0.79</td>
+      <td>0.13</td>
+      <td>0.08</td>
+      <td>H</td>
+    </tr>
+    <tr>
+      <td>2022-09-01</td>
+      <td>1.84</td>
+      <td>Bologna</td>
+      <td>3.55</td>
+      <td>Salernitana</td>
+      <td>4.15</td>
+      <td>0.37</td>
+      <td>0.24</td>
+      <td>0.39</td>
+      <td>A</td>
+    </tr>
+    <tr>
+      <td>2022-09-01</td>
+      <td>1.58</td>
+      <td>Atalanta</td>
+      <td>4.20</td>
+      <td>Torino</td>
+      <td>5.15</td>
+      <td>0.46</td>
+      <td>0.29</td>
+      <td>0.25</td>
+      <td>D</td>
+    </tr>
+    <tr>
+      <td>2022-09-03</td>
+      <td>2.95</td>
+      <td>Fiorentina</td>
+      <td>3.05</td>
+      <td>Juventus</td>
+      <td>2.49</td>
+      <td>0.60</td>
+      <td>0.17</td>
+      <td>0.23</td>
+      <td>H</td>
+    </tr>
+    <tr>
+      <td>2022-09-03</td>
+      <td>3.15</td>
+      <td>Milan</td>
+      <td>3.05</td>
+      <td>Inter</td>
+      <td>2.36</td>
+      <td>0.44</td>
+      <td>0.21</td>
+      <td>0.36</td>
+      <td>A</td>
+    </tr>
+    <tr>
+      <td>2022-09-03</td>
+      <td>2.80</td>
+      <td>Lazio</td>
+      <td>3.50</td>
+      <td>Napoli</td>
+      <td>2.35</td>
+      <td>0.28</td>
+      <td>0.22</td>
+      <td>0.50</td>
+      <td>A</td>
+    </tr>
+    <tr>
+      <td>2022-09-04</td>
+      <td>2.70</td>
+      <td>Spezia</td>
+      <td>3.05</td>
+      <td>Bologna</td>
+      <td>2.70</td>
+      <td>0.46</td>
+      <td>0.22</td>
+      <td>0.31</td>
+      <td>A</td>
+    </tr>
+    <tr>
+      <td>2022-09-04</td>
+      <td>1.92</td>
+      <td>Verona</td>
+      <td>3.85</td>
+      <td>Sampdoria</td>
+      <td>3.50</td>
+      <td>0.38</td>
+      <td>0.28</td>
+      <td>0.34</td>
+      <td>D</td>
+    </tr>
+    <tr>
+      <td>2022-09-04</td>
+      <td>3.65</td>
+      <td>Udinese</td>
+      <td>3.60</td>
+      <td>Roma</td>
+      <td>1.94</td>
+      <td>0.20</td>
+      <td>0.22</td>
+      <td>0.58</td>
+      <td>A</td>
+    </tr>
+    <tr>
+      <td>2022-09-05</td>
+      <td>2.36</td>
+      <td>Salernitana</td>
+      <td>3.50</td>
+      <td>Empoli</td>
+      <td>2.80</td>
+      <td>0.42</td>
+      <td>0.29</td>
+      <td>0.29</td>
+      <td>D</td>
     </tr>
   </tbody>
 </table>
@@ -711,138 +1009,270 @@
         <!-- LaLiga -->
 <table border="1" class="dataframe content-table">
   <thead>
-    <tr style="text-align: right;">
+    <tr style="text-align: center;">
       <th>Date</th>
-      <th>H - odds</th>
-      <th>HomeTeam</th>
-      <th>D - odds</th>
-      <th>AwayTeam</th>
-      <th>A - odds</th>
-      <th>prob H</th>
-      <th>prob D</th>
-      <th>prob A</th>
+      <th>H-odds</th>
+      <th>Home</th>
+      <th>D-odds</th>
+      <th>Away</th>
+      <th>A-odds</th>
+      <th>P(H)</th>
+      <th>P(D)</th>
+      <th>P(A)</th>
       <th>Prediction</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>2022-05-20</td>
-      <td>2.20</td>
-      <td>R. Vallecano</td>
-      <td>3.50</td>
-      <td>Levante</td>
-      <td>3.05</td>
-      <td>0.4453</td>
-      <td>0.2276</td>
-      <td>0.3271</td>
+      <td>2022-08-22</td>
+      <td>2.45</td>
+      <td>Elche</td>
+      <td>3.15</td>
+      <td>Almeria</td>
+      <td>3.10</td>
+      <td>0.42</td>
+      <td>0.24</td>
+      <td>0.33</td>
       <td>A</td>
     </tr>
     <tr>
-      <td>2022-05-20</td>
-      <td>1.72</td>
-      <td>Real Madryt</td>
-      <td>4.05</td>
-      <td>Betis</td>
-      <td>4.20</td>
-      <td>0.5776</td>
-      <td>0.2253</td>
-      <td>0.1970</td>
-      <td>H</td>
-    </tr>
-    <tr>
-      <td>2022-05-21</td>
-      <td>2.95</td>
-      <td>Valencia</td>
-      <td>3.20</td>
-      <td>Celta</td>
-      <td>2.39</td>
-      <td>0.2879</td>
-      <td>0.3761</td>
-      <td>0.3360</td>
-      <td>D</td>
-    </tr>
-    <tr>
-      <td>2022-05-22</td>
-      <td>3.10</td>
-      <td>Elche</td>
-      <td>2.90</td>
+      <td>2022-08-22</td>
+      <td>2.80</td>
+      <td>Girona</td>
+      <td>2.80</td>
       <td>Getafe</td>
-      <td>2.49</td>
-      <td>0.3281</td>
-      <td>0.3431</td>
-      <td>0.3288</td>
-      <td>D</td>
-    </tr>
-    <tr>
-      <td>2022-05-22</td>
-      <td>3.50</td>
-      <td>Osasuna</td>
-      <td>3.20</td>
-      <td>Mallorca</td>
-      <td>2.13</td>
-      <td>0.4601</td>
-      <td>0.2655</td>
-      <td>0.2744</td>
+      <td>3.00</td>
+      <td>0.46</td>
+      <td>0.25</td>
+      <td>0.29</td>
       <td>H</td>
     </tr>
     <tr>
-      <td>2022-05-22</td>
-      <td>4.65</td>
-      <td>Alaves</td>
+      <td>2022-08-26</td>
+      <td>2.95</td>
+      <td>Girona</td>
+      <td>3.00</td>
+      <td>Celta</td>
+      <td>2.55</td>
+      <td>0.41</td>
+      <td>0.28</td>
+      <td>0.31</td>
+      <td>D</td>
+    </tr>
+    <tr>
+      <td>2022-08-26</td>
+      <td>1.75</td>
+      <td>Betis</td>
+      <td>3.65</td>
+      <td>Osasuna</td>
+      <td>4.50</td>
+      <td>0.55</td>
+      <td>0.18</td>
+      <td>0.27</td>
+      <td>H</td>
+    </tr>
+    <tr>
+      <td>2022-08-27</td>
+      <td>4.30</td>
+      <td>Elche</td>
+      <td>3.30</td>
+      <td>Real Sociedad</td>
+      <td>1.87</td>
+      <td>0.21</td>
+      <td>0.24</td>
+      <td>0.55</td>
+      <td>A</td>
+    </tr>
+    <tr>
+      <td>2022-08-27</td>
+      <td>2.09</td>
+      <td>R. Vallecano</td>
+      <td>3.15</td>
+      <td>Mallorca</td>
+      <td>3.65</td>
+      <td>0.53</td>
+      <td>0.23</td>
+      <td>0.24</td>
+      <td>H</td>
+    </tr>
+    <tr>
+      <td>2022-08-27</td>
+      <td>3.45</td>
+      <td>Almeria</td>
+      <td>3.10</td>
+      <td>Sevilla</td>
+      <td>2.19</td>
+      <td>0.38</td>
+      <td>0.25</td>
+      <td>0.37</td>
+      <td>A</td>
+    </tr>
+    <tr>
+      <td>2022-08-28</td>
+      <td>3.40</td>
+      <td>Getafe</td>
+      <td>3.10</td>
+      <td>Villarreal</td>
+      <td>2.20</td>
+      <td>0.30</td>
+      <td>0.21</td>
+      <td>0.49</td>
+      <td>A</td>
+    </tr>
+    <tr>
+      <td>2022-08-28</td>
+      <td>1.20</td>
+      <td>Barcelona</td>
+      <td>6.85</td>
+      <td>Valladolid</td>
+      <td>14.25</td>
+      <td>0.45</td>
+      <td>0.30</td>
+      <td>0.25</td>
+      <td>D</td>
+    </tr>
+    <tr>
+      <td>2022-08-28</td>
+      <td>5.75</td>
+      <td>Espanyol</td>
+      <td>4.55</td>
+      <td>Real Madryt</td>
+      <td>1.49</td>
+      <td>0.24</td>
+      <td>0.22</td>
+      <td>0.54</td>
+      <td>A</td>
+    </tr>
+    <tr>
+      <td>2022-08-29</td>
       <td>3.75</td>
       <td>Cadiz</td>
-      <td>1.71</td>
-      <td>0.3889</td>
-      <td>0.2316</td>
-      <td>0.3795</td>
+      <td>3.10</td>
+      <td>Bilbao</td>
+      <td>2.08</td>
+      <td>0.22</td>
+      <td>0.25</td>
+      <td>0.52</td>
       <td>A</td>
     </tr>
     <tr>
-      <td>2022-05-22</td>
-      <td>1.50</td>
-      <td>Granada</td>
-      <td>4.35</td>
-      <td>Espanyol</td>
-      <td>5.90</td>
-      <td>0.4468</td>
-      <td>0.2897</td>
-      <td>0.2635</td>
-      <td>D</td>
-    </tr>
-    <tr>
-      <td>2022-05-22</td>
-      <td>2.41</td>
-      <td>Sevilla</td>
-      <td>3.25</td>
-      <td>Bilbao</td>
-      <td>2.90</td>
-      <td>0.4829</td>
-      <td>0.2857</td>
-      <td>0.2314</td>
-      <td>D</td>
-    </tr>
-    <tr>
-      <td>2022-05-22</td>
-      <td>2.70</td>
-      <td>Real Sociedad</td>
-      <td>3.15</td>
+      <td>2022-08-29</td>
+      <td>4.20</td>
+      <td>Valencia</td>
+      <td>3.30</td>
       <td>Atl. Madryt</td>
-      <td>2.65</td>
-      <td>0.4222</td>
-      <td>0.2645</td>
-      <td>0.3134</td>
+      <td>1.90</td>
+      <td>0.48</td>
+      <td>0.23</td>
+      <td>0.29</td>
+      <td>H</td>
+    </tr>
+    <tr>
+      <td>2022-09-02</td>
+      <td>1.80</td>
+      <td>Celta</td>
+      <td>3.45</td>
+      <td>Cadiz</td>
+      <td>4.50</td>
+      <td>0.53</td>
+      <td>0.23</td>
+      <td>0.24</td>
+      <td>H</td>
+    </tr>
+    <tr>
+      <td>2022-09-03</td>
+      <td>2.07</td>
+      <td>Mallorca</td>
+      <td>3.15</td>
+      <td>Girona</td>
+      <td>3.70</td>
+      <td>0.36</td>
+      <td>0.26</td>
+      <td>0.37</td>
       <td>D</td>
     </tr>
     <tr>
-      <td>2022-05-22</td>
-      <td>2.40</td>
-      <td>Barcelona</td>
+      <td>2022-09-03</td>
+      <td>1.50</td>
+      <td>Real Madryt</td>
+      <td>4.55</td>
+      <td>Betis</td>
+      <td>5.55</td>
+      <td>0.32</td>
+      <td>0.21</td>
+      <td>0.47</td>
+      <td>A</td>
+    </tr>
+    <tr>
+      <td>2022-09-03</td>
+      <td>2.80</td>
+      <td>Real Sociedad</td>
+      <td>3.10</td>
+      <td>Atl. Madryt</td>
+      <td>2.60</td>
+      <td>0.44</td>
+      <td>0.20</td>
+      <td>0.35</td>
+      <td>A</td>
+    </tr>
+    <tr>
+      <td>2022-09-03</td>
       <td>3.65</td>
+      <td>Sevilla</td>
+      <td>3.15</td>
+      <td>Barcelona</td>
+      <td>2.09</td>
+      <td>0.33</td>
+      <td>0.28</td>
+      <td>0.39</td>
+      <td>D</td>
+    </tr>
+    <tr>
+      <td>2022-09-04</td>
+      <td>2.08</td>
+      <td>Osasuna</td>
+      <td>3.05</td>
+      <td>R. Vallecano</td>
+      <td>3.85</td>
+      <td>0.40</td>
+      <td>0.27</td>
+      <td>0.33</td>
+      <td>D</td>
+    </tr>
+    <tr>
+      <td>2022-09-04</td>
+      <td>1.51</td>
+      <td>Bilbao</td>
+      <td>4.15</td>
+      <td>Espanyol</td>
+      <td>6.15</td>
+      <td>0.50</td>
+      <td>0.25</td>
+      <td>0.25</td>
+      <td>H</td>
+    </tr>
+    <tr>
+      <td>2022-09-04</td>
+      <td>1.34</td>
       <td>Villarreal</td>
-      <td>2.65</td>
-      <td>0.5034</td>
-      <td>0.2178</td>
-      <td>0.2788</td>
+      <td>4.90</td>
+      <td>Elche</td>
+      <td>9.35</td>
+      <td>0.60</td>
+      <td>0.18</td>
+      <td>0.21</td>
+      <td>H</td>
+    </tr>
+    <tr>
+      <td>2022-09-04</td>
+      <td>2.21</td>
+      <td>Valencia</td>
+      <td>2.95</td>
+      <td>Getafe</td>
+      <td>3.60</td>
+      <td>0.60</td>
+      <td>0.19</td>
+      <td>0.21</td>
       <td>H</td>
     </tr>
   </tbody>
@@ -861,143 +1291,526 @@
         <!-- Ligue1 -->
 <table border="1" class="dataframe content-table">
   <thead>
-    <tr style="text-align: right;">
+    <tr style="text-align: center;">
       <th>Date</th>
-      <th>H - odds</th>
-      <th>HomeTeam</th>
-      <th>D - odds</th>
-      <th>AwayTeam</th>
-      <th>A - odds</th>
-      <th>prob H</th>
-      <th>prob D</th>
-      <th>prob A</th>
+      <th>H-odds</th>
+      <th>Home</th>
+      <th>D-odds</th>
+      <th>Away</th>
+      <th>A-odds</th>
+      <th>P(H)</th>
+      <th>P(D)</th>
+      <th>P(A)</th>
       <th>Prediction</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>2022-05-21</td>
-      <td>4.10</td>
-      <td>Lille</td>
-      <td>3.80</td>
-      <td>Rennes</td>
-      <td>1.79</td>
-      <td>0.1987</td>
-      <td>0.2087</td>
-      <td>0.5925</td>
-      <td>A</td>
-    </tr>
-    <tr>
-      <td>2022-05-21</td>
-      <td>3.90</td>
-      <td>Reims</td>
-      <td>3.65</td>
-      <td>Nice</td>
-      <td>1.86</td>
-      <td>0.3535</td>
-      <td>0.2310</td>
-      <td>0.4155</td>
-      <td>A</td>
-    </tr>
-    <tr>
-      <td>2022-05-21</td>
-      <td>1.97</td>
-      <td>Brest</td>
-      <td>3.80</td>
-      <td>Bordeaux</td>
+      <td>2022-08-26</td>
       <td>3.40</td>
-      <td>0.4727</td>
-      <td>0.2517</td>
-      <td>0.2756</td>
-      <td>H</td>
+      <td>Ajaccio</td>
+      <td>3.20</td>
+      <td>Lille</td>
+      <td>2.17</td>
+      <td>0.14</td>
+      <td>0.17</td>
+      <td>0.70</td>
+      <td>A</td>
     </tr>
     <tr>
-      <td>2022-05-21</td>
+      <td>2022-08-27</td>
+      <td>3.45</td>
+      <td>Auxerre</td>
+      <td>3.35</td>
+      <td>Strasbourg</td>
       <td>2.09</td>
-      <td>Angers</td>
-      <td>3.60</td>
-      <td>Montpellier</td>
-      <td>3.20</td>
-      <td>0.4646</td>
-      <td>0.3319</td>
-      <td>0.2035</td>
+      <td>0.46</td>
+      <td>0.30</td>
+      <td>0.24</td>
       <td>D</td>
     </tr>
     <tr>
-      <td>2022-05-21</td>
-      <td>2.60</td>
-      <td>Nantes</td>
-      <td>3.45</td>
-      <td>St. Etienne</td>
-      <td>2.55</td>
-      <td>0.5528</td>
-      <td>0.2413</td>
-      <td>0.2059</td>
-      <td>H</td>
-    </tr>
-    <tr>
-      <td>2022-05-21</td>
-      <td>2.17</td>
-      <td>Marsylia</td>
-      <td>3.45</td>
-      <td>Strasbourg</td>
-      <td>3.15</td>
-      <td>0.4465</td>
-      <td>0.2575</td>
-      <td>0.2960</td>
-      <td>H</td>
-    </tr>
-    <tr>
-      <td>2022-05-21</td>
-      <td>3.30</td>
+      <td>2022-08-27</td>
+      <td>2.44</td>
       <td>Lens</td>
-      <td>3.70</td>
-      <td>Monaco</td>
-      <td>2.02</td>
-      <td>0.3711</td>
-      <td>0.2472</td>
-      <td>0.3817</td>
+      <td>3.35</td>
+      <td>Rennes</td>
+      <td>2.80</td>
+      <td>0.60</td>
+      <td>0.20</td>
+      <td>0.20</td>
+      <td>H</td>
+    </tr>
+    <tr>
+      <td>2022-08-28</td>
+      <td>2.43</td>
+      <td>Nantes</td>
+      <td>3.20</td>
+      <td>Toulouse</td>
+      <td>2.90</td>
+      <td>0.20</td>
+      <td>0.24</td>
+      <td>0.56</td>
       <td>A</td>
     </tr>
     <tr>
-      <td>2022-05-21</td>
-      <td>2.22</td>
+      <td>2022-08-28</td>
+      <td>2.04</td>
+      <td>Brest</td>
+      <td>3.45</td>
+      <td>Montpellier</td>
+      <td>3.50</td>
+      <td>0.52</td>
+      <td>0.24</td>
+      <td>0.23</td>
+      <td>H</td>
+    </tr>
+    <tr>
+      <td>2022-08-28</td>
+      <td>2.10</td>
       <td>Lorient</td>
-      <td>3.30</td>
+      <td>3.35</td>
+      <td>Clermont</td>
+      <td>3.40</td>
+      <td>0.46</td>
+      <td>0.22</td>
+      <td>0.32</td>
+      <td>A</td>
+    </tr>
+    <tr>
+      <td>2022-08-28</td>
+      <td>2.60</td>
+      <td>Nice</td>
+      <td>3.25</td>
+      <td>Marsylia</td>
+      <td>2.65</td>
+      <td>0.31</td>
+      <td>0.22</td>
+      <td>0.47</td>
+      <td>A</td>
+    </tr>
+    <tr>
+      <td>2022-08-28</td>
+      <td>2.55</td>
       <td>Troyes</td>
       <td>3.15</td>
-      <td>0.4083</td>
-      <td>0.2958</td>
-      <td>0.2959</td>
+      <td>Angers</td>
+      <td>2.80</td>
+      <td>0.35</td>
+      <td>0.33</td>
+      <td>0.33</td>
       <td>D</td>
     </tr>
     <tr>
-      <td>2022-05-21</td>
-      <td>1.16</td>
+      <td>2022-08-28</td>
+      <td>4.30</td>
+      <td>Reims</td>
+      <td>3.90</td>
+      <td>Lyon</td>
+      <td>1.73</td>
+      <td>0.23</td>
+      <td>0.22</td>
+      <td>0.55</td>
+      <td>A</td>
+    </tr>
+    <tr>
+      <td>2022-08-28</td>
+      <td>1.23</td>
       <td>PSG</td>
-      <td>8.25</td>
-      <td>Metz</td>
-      <td>13.75</td>
-      <td>0.7794</td>
-      <td>0.1372</td>
-      <td>0.0834</td>
+      <td>7.00</td>
+      <td>Monaco</td>
+      <td>10.25</td>
+      <td>0.68</td>
+      <td>0.17</td>
+      <td>0.15</td>
       <td>H</td>
     </tr>
     <tr>
-      <td>2022-05-21</td>
-      <td>3.70</td>
+      <td>2022-08-31</td>
+      <td>1.33</td>
+      <td>Monaco</td>
+      <td>5.40</td>
+      <td>Troyes</td>
+      <td>8.30</td>
+      <td>0.59</td>
+      <td>0.22</td>
+      <td>0.20</td>
+      <td>H</td>
+    </tr>
+    <tr>
+      <td>2022-08-31</td>
+      <td>2.49</td>
+      <td>Angers</td>
+      <td>3.15</td>
+      <td>Reims</td>
+      <td>2.90</td>
+      <td>0.39</td>
+      <td>0.28</td>
+      <td>0.33</td>
+      <td>D</td>
+    </tr>
+    <tr>
+      <td>2022-08-31</td>
+      <td>1.81</td>
+      <td>Strasbourg</td>
+      <td>3.65</td>
+      <td>Nantes</td>
+      <td>4.15</td>
+      <td>0.45</td>
+      <td>0.28</td>
+      <td>0.26</td>
+      <td>D</td>
+    </tr>
+    <tr>
+      <td>2022-08-31</td>
+      <td>1.51</td>
+      <td>Lens</td>
+      <td>4.25</td>
+      <td>Lorient</td>
+      <td>5.90</td>
+      <td>0.63</td>
+      <td>0.19</td>
+      <td>0.18</td>
+      <td>H</td>
+    </tr>
+    <tr>
+      <td>2022-08-31</td>
+      <td>1.42</td>
+      <td>Rennes</td>
+      <td>4.85</td>
+      <td>Brest</td>
+      <td>6.55</td>
+      <td>0.49</td>
+      <td>0.25</td>
+      <td>0.26</td>
+      <td>H</td>
+    </tr>
+    <tr>
+      <td>2022-08-31</td>
+      <td>1.41</td>
+      <td>Marsylia</td>
+      <td>4.85</td>
       <td>Clermont</td>
-      <td>3.90</td>
+      <td>6.75</td>
+      <td>0.56</td>
+      <td>0.23</td>
+      <td>0.21</td>
+      <td>H</td>
+    </tr>
+    <tr>
+      <td>2022-08-31</td>
+      <td>2.14</td>
+      <td>Lille</td>
+      <td>3.30</td>
+      <td>Nice</td>
+      <td>3.35</td>
+      <td>0.63</td>
+      <td>0.21</td>
+      <td>0.15</td>
+      <td>H</td>
+    </tr>
+    <tr>
+      <td>2022-09-03</td>
+      <td>1.31</td>
       <td>Lyon</td>
-      <td>1.85</td>
-      <td>0.2607</td>
-      <td>0.2004</td>
-      <td>0.5389</td>
+      <td>5.65</td>
+      <td>Angers</td>
+      <td>8.65</td>
+      <td>0.56</td>
+      <td>0.22</td>
+      <td>0.22</td>
+      <td>H</td>
+    </tr>
+    <tr>
+      <td>2022-09-03</td>
+      <td>9.70</td>
+      <td>Nantes</td>
+      <td>6.50</td>
+      <td>PSG</td>
+      <td>1.25</td>
+      <td>0.14</td>
+      <td>0.18</td>
+      <td>0.68</td>
       <td>A</td>
+    </tr>
+    <tr>
+      <td>2022-09-04</td>
+      <td>3.55</td>
+      <td>Montpellier</td>
+      <td>3.55</td>
+      <td>Lille</td>
+      <td>1.99</td>
+      <td>0.19</td>
+      <td>0.18</td>
+      <td>0.63</td>
+      <td>A</td>
+    </tr>
+    <tr>
+      <td>2022-09-04</td>
+      <td>2.90</td>
+      <td>Brest</td>
+      <td>3.45</td>
+      <td>Strasbourg</td>
+      <td>2.32</td>
+      <td>0.57</td>
+      <td>0.26</td>
+      <td>0.17</td>
+      <td>H</td>
+    </tr>
+    <tr>
+      <td>2022-09-04</td>
+      <td>3.45</td>
+      <td>Reims</td>
+      <td>3.40</td>
+      <td>Lens</td>
+      <td>2.06</td>
+      <td>0.18</td>
+      <td>0.18</td>
+      <td>0.63</td>
+      <td>A</td>
+    </tr>
+    <tr>
+      <td>2022-09-04</td>
+      <td>4.55</td>
+      <td>Troyes</td>
+      <td>3.85</td>
+      <td>Rennes</td>
+      <td>1.70</td>
+      <td>0.25</td>
+      <td>0.24</td>
+      <td>0.51</td>
+      <td>A</td>
+    </tr>
+    <tr>
+      <td>2022-09-04</td>
+      <td>2.65</td>
+      <td>Nice</td>
+      <td>3.55</td>
+      <td>Monaco</td>
+      <td>2.47</td>
+      <td>0.46</td>
+      <td>0.26</td>
+      <td>0.29</td>
+      <td>H</td>
     </tr>
   </tbody>
 </table>
 
+        
+        </div>
+      </section>
+      
+      
+      
+      
+      
+      
+      <!-- Table with model performance -->
+      <section class="section about-me" data-section="section7">
+        <div class="container">
+        
+        <h4>Model Performance</h4>
+        
+        <h5>Accuracy - Season 2021/2022</h5>
+            <table border="3" class="dataframe content-table">
+            <thead>
+                <tr style="text-align: center;">
+                <th>League</th>
+                <th>Accuracy</th>
+                <th>Balanced Accuracy</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                <td>Premier League</td>
+                <td>45%</td>
+                <td>42%</td>
+                </tr>
+                <tr>
+                <td>Bundesliga</td>
+                <td>49%</td>
+                <td>45%</td>
+                </tr>
+                <tr>
+                <td>Serie A</td>
+                <td>49%</td>
+                <td>46%</td>
+                </tr>
+                <tr>
+                <td>La Liga</td>
+                <td>49%</td>
+                <td>48%</td>
+                </tr>
+                <tr>
+                <td>Ligue 1</td>
+                <td>48%</td>
+                <td>46%</td>
+                </tr>
+                </tbody>
+            </table>
+        
+        
+        
+        
+        <h5>Premier League</h5>
+            <table border="3" class="dataframe content-table">
+            <thead>
+                <tr style="text-align: center;">
+                <th>Group</th>
+                <th>Precision</th>
+                <th>Recall</th>
+                <th>F1-Score</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                <td>Away</td>
+                <td>0.50</td>
+                <td>0.43</td>
+                <td>0.46</td>
+                </tr>
+                <tr>
+                <td>Draw</td>
+                <td>0.22</td>
+                <td>0.26</td>
+                <td>0.24</td>
+                </tr>
+                <tr>
+                <td>Home</td>
+                <td>0.57</td>
+                <td>0.57</td>
+                <td>0.57</td>
+                </tr>
+                </tbody>
+            </table>
+            
+        <h5>Bundesliga</h5>
+            <table border="3" class="dataframe content-table">
+            <thead>
+                <tr style="text-align: center;">
+                <th>Group</th>
+                <th>Precision</th>
+                <th>Recall</th>
+                <th>F1-Score</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                <td>Away</td>
+                <td>0.40</td>
+                <td>0.58</td>
+                <td>0.47</td>
+                </tr>
+                <tr>
+                <td>Draw</td>
+                <td>0.30</td>
+                <td>0.18</td>
+                <td>0.23</td>
+                </tr>
+                <tr>
+                <td>Home</td>
+                <td>0.65</td>
+                <td>0.59</td>
+                <td>0.62</td>
+                </tr>
+                </tbody>
+            </table>
+        
+        <h5>Serie A</h5>
+            <table border="3" class="dataframe content-table">
+            <thead>
+                <tr style="text-align: center;">
+                <th>Group</th>
+                <th>Precision</th>
+                <th>Recall</th>
+                <th>F1-Score</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                <td>Away</td>
+                <td>0.54</td>
+                <td>0.60</td>
+                <td>0.57</td>
+                </tr>
+                <tr>
+                <td>Draw</td>
+                <td>0.22</td>
+                <td>0.14</td>
+                <td>0.17</td>
+                </tr>
+                <tr>
+                <td>Home</td>
+                <td>0.54</td>
+                <td>0.63</td>
+                <td>0.58</td>
+                </tr>
+                </tbody>
+            </table>
+            
+        <h5>La Liga</h5>
+            <table border="3" class="dataframe content-table">
+            <thead>
+                <tr style="text-align: center;">
+                <th>Group</th>
+                <th>Precision</th>
+                <th>Recall</th>
+                <th>F1-Score</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                <td>Away</td>
+                <td>0.43</td>
+                <td>0.37</td>
+                <td>0.40</td>
+                </tr>
+                <tr>
+                <td>Draw</td>
+                <td>0.38</td>
+                <td>0.47</td>
+                <td>0.42</td>
+                </tr>
+                <tr>
+                <td>Home</td>
+                <td>0.63</td>
+                <td>0.59</td>
+                <td>0.61</td>
+                </tr>
+                </tbody>
+            </table>
+            
+        <h5>Ligue 1</h5>
+            <table border="3" class="dataframe content-table">
+            <thead>
+                <tr style="text-align: center;">
+                <th>Group</th>
+                <th>Precision</th>
+                <th>Recall</th>
+                <th>F1-Score</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                <td>Away</td>
+                <td>0.42</td>
+                <td>0.46</td>
+                <td>0.44</td>
+                </tr>
+                <tr>
+                <td>Draw</td>
+                <td>0.34</td>
+                <td>0.33</td>
+                <td>0.33</td>
+                </tr>
+                <tr>
+                <td>Home</td>
+                <td>0.61</td>
+                <td>0.59</td>
+                <td>0.60</td>
+                </tr>
+                </tbody>
+            </table>
         
         </div>
       </section>

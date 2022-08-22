@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <title>Blugoon HTML Bootstrap 4 Template</title>
+    <title>FOOTBALL PREDICTIONS</title>
     <meta name="description" content="" />
     <meta name="author" content="Tooplate" />
     <!-- Bootstrap core CSS -->
@@ -28,7 +28,14 @@
             </div>
             <div class="author-content">
               <h4>FOOTBALL PREDICTIONS</h4>
-              <span>M.SOCZI</span>
+              <span>M.SOCZI
+                <br>
+                Last update:
+                <script>
+                let text = document.lastModified;
+                document.write(new Date(document.lastModified).toLocaleDateString());
+                </script>
+              </span>
             </div>
             <nav class="main-nav" role="navigation">
               <ul class="main-menu">
@@ -38,6 +45,7 @@
                 <li><a href="#section4">Serie A</a></li>
                 <li><a href="#section5">LaLiga</a></li>
                 <li><a href="#section6">Ligue 1</a></li>
+                <li><a href="#section7">Model Performance</a></li>
               </ul>
             </nav>
             <!--
@@ -62,8 +70,10 @@
             </div>
             -->
             <div class="copyright-text">
-              <p>Copyright 2021 Mateusz Soczewka<br>
-              Design: Mateusz Soczewka</p>
+              <p>
+              Copyright 2021 Mateusz Soczewka<br>
+              Design: Mateusz Soczewka
+              </p>
             </div>
           </div>
         </div>
@@ -79,7 +89,7 @@
             <h2>About project</h2>
             <div class="line-dec"></div>
             <span>
-            On this page you will find predictions of the results of the leading European leagues.<br>
+            On this page you will find forecasts for the top European football leagues.<br>
             More info on <a href="https://github.com/msoczi/football_predictions">GitHub</a>.</span>
           </div>
         </div>
@@ -135,6 +145,221 @@
         
         <h4>Ligue 1</h4>
         <!-- Ligue1 -->
+        
+        </div>
+      </section>
+      
+      
+      
+      
+      
+      
+      <!-- Table with model performance -->
+      <section class="section about-me" data-section="section7">
+        <div class="container">
+        
+        <h4>Model Performance</h4>
+        
+        <h5>Accuracy - Season 2021/2022</h5>
+            <table border="3" class="dataframe content-table">
+            <thead>
+                <tr style="text-align: center;">
+                <th>League</th>
+                <th>Accuracy</th>
+                <th>Balanced Accuracy</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                <td>Premier League</td>
+                <td>45%</td>
+                <td>42%</td>
+                </tr>
+                <tr>
+                <td>Bundesliga</td>
+                <td>49%</td>
+                <td>45%</td>
+                </tr>
+                <tr>
+                <td>Serie A</td>
+                <td>49%</td>
+                <td>46%</td>
+                </tr>
+                <tr>
+                <td>La Liga</td>
+                <td>49%</td>
+                <td>48%</td>
+                </tr>
+                <tr>
+                <td>Ligue 1</td>
+                <td>48%</td>
+                <td>46%</td>
+                </tr>
+                </tbody>
+            </table>
+        
+        
+        
+        
+        <h5>Premier League</h5>
+            <table border="3" class="dataframe content-table">
+            <thead>
+                <tr style="text-align: center;">
+                <th>Group</th>
+                <th>Precision</th>
+                <th>Recall</th>
+                <th>F1-Score</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                <td>Away</td>
+                <td>0.50</td>
+                <td>0.43</td>
+                <td>0.46</td>
+                </tr>
+                <tr>
+                <td>Draw</td>
+                <td>0.22</td>
+                <td>0.26</td>
+                <td>0.24</td>
+                </tr>
+                <tr>
+                <td>Home</td>
+                <td>0.57</td>
+                <td>0.57</td>
+                <td>0.57</td>
+                </tr>
+                </tbody>
+            </table>
+            
+        <h5>Bundesliga</h5>
+            <table border="3" class="dataframe content-table">
+            <thead>
+                <tr style="text-align: center;">
+                <th>Group</th>
+                <th>Precision</th>
+                <th>Recall</th>
+                <th>F1-Score</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                <td>Away</td>
+                <td>0.40</td>
+                <td>0.58</td>
+                <td>0.47</td>
+                </tr>
+                <tr>
+                <td>Draw</td>
+                <td>0.30</td>
+                <td>0.18</td>
+                <td>0.23</td>
+                </tr>
+                <tr>
+                <td>Home</td>
+                <td>0.65</td>
+                <td>0.59</td>
+                <td>0.62</td>
+                </tr>
+                </tbody>
+            </table>
+        
+        <h5>Serie A</h5>
+            <table border="3" class="dataframe content-table">
+            <thead>
+                <tr style="text-align: center;">
+                <th>Group</th>
+                <th>Precision</th>
+                <th>Recall</th>
+                <th>F1-Score</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                <td>Away</td>
+                <td>0.54</td>
+                <td>0.60</td>
+                <td>0.57</td>
+                </tr>
+                <tr>
+                <td>Draw</td>
+                <td>0.22</td>
+                <td>0.14</td>
+                <td>0.17</td>
+                </tr>
+                <tr>
+                <td>Home</td>
+                <td>0.54</td>
+                <td>0.63</td>
+                <td>0.58</td>
+                </tr>
+                </tbody>
+            </table>
+            
+        <h5>La Liga</h5>
+            <table border="3" class="dataframe content-table">
+            <thead>
+                <tr style="text-align: center;">
+                <th>Group</th>
+                <th>Precision</th>
+                <th>Recall</th>
+                <th>F1-Score</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                <td>Away</td>
+                <td>0.43</td>
+                <td>0.37</td>
+                <td>0.40</td>
+                </tr>
+                <tr>
+                <td>Draw</td>
+                <td>0.38</td>
+                <td>0.47</td>
+                <td>0.42</td>
+                </tr>
+                <tr>
+                <td>Home</td>
+                <td>0.63</td>
+                <td>0.59</td>
+                <td>0.61</td>
+                </tr>
+                </tbody>
+            </table>
+            
+        <h5>Ligue 1</h5>
+            <table border="3" class="dataframe content-table">
+            <thead>
+                <tr style="text-align: center;">
+                <th>Group</th>
+                <th>Precision</th>
+                <th>Recall</th>
+                <th>F1-Score</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                <td>Away</td>
+                <td>0.42</td>
+                <td>0.46</td>
+                <td>0.44</td>
+                </tr>
+                <tr>
+                <td>Draw</td>
+                <td>0.34</td>
+                <td>0.33</td>
+                <td>0.33</td>
+                </tr>
+                <tr>
+                <td>Home</td>
+                <td>0.61</td>
+                <td>0.59</td>
+                <td>0.60</td>
+                </tr>
+                </tbody>
+            </table>
         
         </div>
       </section>

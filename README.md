@@ -1,6 +1,6 @@
 ## Football matches result predictions
 ______________
-For results refer to: **https://msoczi.github.io/football_predictions/web/index.html** 
+For page with results refer to: **https://msoczi.github.io/football_predictions/web/index.html** 
 ______________
 The aim of the project was to create a tool for predicting the results of league matches from the leading European leagues based on data prepared by myself.
 
@@ -59,6 +59,6 @@ pip install -r requirements.txt
 ```
 4. Run the <a href="main_script.py">main_script.py</a> from console.
 ```sh
-python main_script.py <LEAGUE_NAME>
+python scripts/main_script.py <LEAGUE_NAME>
 ```
 Then results will be saved to `\output_tables` for league passed in the argument.
