@@ -136,3 +136,129 @@ teams_names_dict :
         Auxerre: 'Auxerre'
 
 
+fifa_rating_league_no :
+    PremierLeague : '13'
+    Bundesliga : '19'
+    SerieA : '31'
+    LaLiga : '53'
+    Ligue1 : '16'
+
+
+fifa_rating_teams_dict :
+    PremierLeague:
+        Brentford: 'Brentford'
+        Manchester United: 'Man United'
+        Burnley: 'Burnley'
+        Chelsea: 'Chelsea'
+        Everton: 'Everton'
+        Leicester City: 'Leicester'
+        Watford: 'Watford'
+        Norwich City: 'Norwich'
+        Newcastle United: 'Newcastle'
+        Tottenham Hotspur: 'Tottenham'
+        Liverpool: 'Liverpool'
+        Aston Villa: 'Aston Villa'
+        Crystal Palace: 'Crystal Palace'
+        Leeds United: 'Leeds'
+        Manchester City: 'Man City'
+        Brighton & Hove Albion: 'Brighton'
+        Southampton: 'Southampton'
+        Wolverhampton Wanderers: 'Wolves'
+        Arsenal: 'Arsenal'
+        West Ham United: 'West Ham'
+        AFC Bournemouth: 'Bournemouth'
+        Fulham: 'Fulham'
+        Nottingham Forest: "Nott'm Forest"
+    Bundesliga:
+        Borussia M'gladbach: "M'gladbach"
+        FC Augsburg: 'Augsburg'
+        Arminia Bielefeld: 'Bielefeld'
+        VfB Stuttgart: 'Stuttgart'
+        1. FC Union Berlin: 'Union Berlin'
+        VfL Wolfsburg: 'Wolfsburg'
+        Borussia Dortmund: 'Dortmund'
+        1. FSV Mainz 05: 'Mainz'
+        1. FC Köln: 'FC Koln'
+        RB Leipzig: 'RB Leipzig'
+        VfL Bochum: 'Bochum'
+        Eintracht Frankfurt: 'Ein Frankfurt'
+        SC Freiburg: 'Freiburg'
+        SpVgg Greuther Fürth: 'Greuther Furth'
+        Hertha BSC: 'Hertha'
+        Bayer 04 Leverkusen: 'Leverkusen'
+        TSG 1899 Hoffenheim: 'Hoffenheim'
+        Bayern München: 'Bayern Munich'
+        FC Schalke 04: 'Schalke 04'
+        SV Werder Bremen: 'Werder Bremen'
+    SerieA:
+        Inter: "Inter"
+        Hellas Verona: "Verona"
+        Empoli: "Empoli"
+        Torino: "Torino"
+        Bologna: "Bologna"
+        Udinese: "Udinese"
+        Napoli: "Napoli"
+        Roma: "Roma"
+        Cagliari: "Cagliari"
+        Sampdoria: "Sampdoria"
+        Atalanta: "Atalanta"
+        Lazio: "Lazio"
+        Fiorentina: "Fiorentina"
+        Juventus: "Juventus"
+        Genoa: "Genoa"
+        Sassuolo: "Sassuolo"
+        Milan: "Milan"
+        Salernitana: "Salernitana"
+        Venezia: "Venezia"
+        La Spezia: "Spezia"
+        Lecce: "Lecce"
+        AC Monza: "Monza"
+        Cremona: "Cremonese"
+    LaLiga:
+        Valencia CF: "Valencia"
+        Cádiz CF: "Cadiz"
+        RCD Mallorca: "Mallorca"
+        Deportivo Alavés: "Alaves"
+        CA Osasuna: "Osasuna"
+        RC Celta de Vigo: "Celta"
+        FC Barcelona: "Barcelona"
+        Sevilla FC: "Sevilla"
+        Villarreal CF: "Villarreal"
+        Elche CF: "Elche"
+        Real Betis Balompié: "Betis"
+        RCD Espanyol: "Espanol"
+        Granada CF: "Granada"
+        Athletic Club de Bilbao: "Ath Bilbao"
+        Real Sociedad: "Sociedad"
+        Atlético de Madrid: "Ath Madrid"
+        Levante UD: "Levante"
+        Getafe CF: "Getafe"
+        Rayo Vallecano: "Vallecano"
+        Real Madrid: "Real Madrid"
+        UD Almería: "Almeria"
+        R. Valladolid CF: "Valladolid"
+        Girona FC: "Girona"
+    Ligue1 :
+        AS Monaco: 'Monaco'
+        Olympique Lyonnais: 'Lyon'
+        ESTAC Troyes: 'Troyes'
+        Stade Rennais: 'Rennes'
+        FC Girondins de Bordeaux: 'Bordeaux'
+        OGC Nice: 'Nice'
+        AS Saint-Étienne: 'St Etienne'
+        RC Strasbourg Alsace: 'Strasbourg'
+        FC Metz: 'Metz'
+        Montpellier Hérault SC: 'Montpellier'
+        FC Lorient: 'Lorient'
+        LOSC Lille: 'Lille'
+        Paris Saint-Germain: 'Paris SG'
+        Angers SCO: 'Angers'
+        Stade Brestois 29: 'Brest'
+        Clermont Foot: 'Clermont'
+        FC Nantes: 'Nantes'
+        Stade de Reims: 'Reims'
+        RC Lens: 'Lens'
+        Olympique de Marseille: 'Marseille'
+        Toulouse Football Club: 'Toulouse'
+        AC Ajaccio: 'Ajaccio'
+        AJ Auxerre: 'Auxerre'

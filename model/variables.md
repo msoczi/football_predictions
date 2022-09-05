@@ -6,6 +6,7 @@ Possible aggregation:
 * wz - coefficient of variation
 * min - minimum
 * max - maximum
+* trd - trend (linear regression slope)
 
 |     Variable    | Type        | Description                                                                                           |
 |:---------------:|-------------|-------------------------------------------------------------------------------------------------------|

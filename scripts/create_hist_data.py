@@ -18,6 +18,9 @@ sys.path.append('scripts//components//')
 import yaml
 import pandas as pd
 import numpy as np
+from scipy.stats import linregress
+import requests
+from bs4 import BeautifulSoup
 
 # import own components
 from aggvarfun import create_agg_var
@@ -26,13 +29,14 @@ from aggvarfun import create_agg_var
 N_MATCH_ = int(float(sys.argv[1]))
 FILE_READ_ = sys.argv[2]
 FILE_SAVE_ = sys.argv[3]
+LEAGUE_ = sys.argv[4]
 
 
 with open("config.yaml", 'r') as configuration:
     config = yaml.safe_load(configuration)
 
 
-def calc_features(n, file_read):
+def calc_features(n, file_read, league):
     def read_data(n, file_read):
         # n=0 - get all rows
         # n=1 - remove 1 row
@@ -173,12 +177,34 @@ def calc_features(n, file_read):
     res_table['pozycja'] = range(1,len(res_table)+1)
     res_table
 
+
+
+    ####################################################################################
+    # Scraping future matches and their odds from the STS website
+    def fifa_rating_scraping(config=config):
+            page = requests.get(f'https://www.fifaindex.com/teams/fifa'+config['season'][:2]+'/?league='+config['fifa_rating_league_no'][LEAGUE_])
+            soup = BeautifulSoup(page.content, 'html.parser')
+            
+            table = soup.findAll("table", { "class" : "table table-striped table-teams"})
+
+            fifa_rating_df = pd.read_html(str(table))[0].dropna(axis=0, how='all').dropna(axis=1, how='all').reset_index(drop=True)[['Name','ATT','MID','DEF','OVR']]
+            
+            fifa_rating_df = fifa_rating_df.replace({"Name": config['fifa_rating_teams_dict'][LEAGUE_]})
+            fifa_rating_df = fifa_rating_df.set_index('Name')
+            return fifa_rating_df
+        
+    # Call function to create DataFrame 'courses' with odds
+    fifa_rating_df = fifa_rating_scraping()
+
+
+
     ###########################################################################
     # The (almost) output table - data with created variables
     ###########################################################################
 
     output = pd.concat([form_var,
-                        res_table[['pts_per_math','gz','gs','sh_od','sh_ot','cw','cb','pozycja']]
+                        res_table[['pts_per_math','gz','gs','sh_od','sh_ot','cw','cb','pozycja']],
+                        fifa_rating_df
                        ], axis=1)
     
     h_var = output.loc[[HOME_TEAM] , : ]
@@ -191,6 +217,10 @@ def calc_features(n, file_read):
     
     output_concat = pd.concat([match_res, h_var, a_var], axis=1)
     output_concat['position_dst'] = abs(output_concat['h_pozycja'] - output_concat['a_pozycja'])
+    output_concat['ATT_dst'] = abs(output_concat['h_ATT'] - output_concat['a_ATT'])
+    output_concat['MID_dst'] = abs(output_concat['h_MID'] - output_concat['a_MID'])
+    output_concat['DEF_dst'] = abs(output_concat['h_DEF'] - output_concat['a_DEF'])
+    output_concat['OVR_dst'] = abs(output_concat['h_OVR'] - output_concat['a_OVR'])
     
     output_concat = output_concat.rename(columns={"B365H": "h_course", "B365D": "d_course", "B365A":"a_course"})
 
@@ -210,10 +240,10 @@ def calc_features(n, file_read):
 
 # Save data to .csv - variables for each pair of teams in specific match
 def create_hist_data(N_match, file_read, file_save):
-    calc_features(N_match, file_read=file_read).to_csv(file_save, index=False)
+    calc_features(N_match, file_read=file_read, league=LEAGUE_).to_csv(file_save, index=False)
     for i in range(0,N_match):
         print(f'Save: {i+1}/{N_match}')
-        calc_features(N_match-1-i, file_read=file_read).to_csv(file_save, mode='a', header=False, index=False)
+        calc_features(N_match-1-i, file_read=file_read, league=LEAGUE_).to_csv(file_save, mode='a', header=False, index=False)
 
 
 # Run main function

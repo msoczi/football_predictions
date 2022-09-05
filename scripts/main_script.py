@@ -228,17 +228,35 @@ def predict_results(league):
         #####################################################################
         
         
+        ####################################################################################
+        # Scraping future matches and their odds from the STS website
+        def fifa_rating_scraping(LEAGUE=LEAGUE, config=config):
+            page = requests.get(f'https://www.fifaindex.com/teams/fifa'+config['season'][:2]+'/?league='+config['fifa_rating_league_no'][LEAGUE])
+            soup = BeautifulSoup(page.content, 'html.parser')
+            
+            table = soup.findAll("table", { "class" : "table table-striped table-teams"})
+
+            fifa_rating_df = pd.read_html(str(table))[0].dropna(axis=0, how='all').dropna(axis=1, how='all').reset_index(drop=True)[['Name','ATT','MID','DEF','OVR']]
+            
+            fifa_rating_df = fifa_rating_df.replace({"Name": config['fifa_rating_teams_dict'][LEAGUE]})
+            fifa_rating_df = fifa_rating_df.set_index('Name')
+            return fifa_rating_df
         
+        # Call function to create DataFrame 'courses' with odds
+        fifa_rating_df = fifa_rating_scraping()
+
 
         ###########################################################################
         ### Concatenate tables with all types of variables:
         # - form_var (aggregates)
         # - res_table (variables from league table)
+        # - fifa_rating_df (FIFA ratings teams)
         # The (almost) output table is the data with created variables
         ###########################################################################
 
         output = pd.concat([form_var,
-                            res_table[['pts_per_math','gz','gs','sh_od','sh_ot','cw','cb','pozycja']]
+                            res_table[['pts_per_math','gz','gs','sh_od','sh_ot','cw','cb','pozycja']],
+                            fifa_rating_df
                            ], axis=1)
 
         h_var = output.loc[[home_team] , : ]
@@ -251,6 +269,10 @@ def predict_results(league):
 
         output_concat = pd.concat([h_var, a_var], axis=1)
         output_concat['position_dst'] = abs(output_concat['h_pozycja'] - output_concat['a_pozycja'])
+        output_concat['ATT_dst'] = abs(output_concat['h_ATT'] - output_concat['a_ATT'])
+        output_concat['MID_dst'] = abs(output_concat['h_MID'] - output_concat['a_MID'])
+        output_concat['DEF_dst'] = abs(output_concat['h_DEF'] - output_concat['a_DEF'])
+        output_concat['OVR_dst'] = abs(output_concat['h_OVR'] - output_concat['a_OVR'])
         return output_concat
     
 
