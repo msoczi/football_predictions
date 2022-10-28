@@ -53,3 +53,16 @@ Possible aggregation:
 |       a_cb      | float       | aggregate number of corners conceded from all games played so far in the   current season (away team) |
 |    a_pozycja    | int         | the position of the away team in the league table                                                     |
 |   position_dst  | int         | position difference in the table                                                                      |
+|      h_ATT      | int         | home team attack rating                                                                               |
+|      h_MID      | int         | home team midfield rating                                                                             |
+|      h_DEF      | int         | home team defense rating                                                                              |
+|      h_OVR      | int         | home team overall rating                                                                              |
+|      a_ATT      | int         | away team attack rating                                                                               |
+|      a_MID      | int         | away team midfield rating                                                                             |
+|      a_DEF      | int         | away team defense rating                                                                              |
+|      a_OVR      | int         | away team overall rating                                                                              |
+|     ATT_dst     | int         | difference in attack rating                                                                           |
+|     MID_dst     | int         | difference in midfield rating                                                                           |
+|     DEF_dst     | int         | difference in defense rating                                                                           |
+|     OVR_dst     | int         | difference in overall rating                                                                           |
+

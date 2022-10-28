@@ -9,7 +9,7 @@ The project was implemented _from scratch_, i.e. it included:
 - creating variables based on i.a. time aggregates (last n matches), position in the table, team form, etc.
 - calculate historical data for modeling
 - building the target solution: XGBoost model with 3 classes. Then, based on the estimated probability, a decision tree was created, which in a simple, rule-based way predicts which team will win the match (or a possible draw)
-- creating a script that downloads data about upcoming matches with bookmaker odds (www.sts.pl), creating model variables for given teams and prediction of the match result.
+- creating a script that downloads data about upcoming matches, creating model variables for given teams and prediction of the match result.
 
 Raw data with match results are downloaded from https://www.football-data.co.uk. <br>
 The advantage of the approach is the ability to predict results from any league. But o far, it is possible to predict the results of the first league of the following countries:
@@ -28,7 +28,7 @@ These probabilities were then used to build a simple decision tree (`max_depth =
 <br>
 ![tree](model/img_tree.PNG)
 
-Forecasts **do not use bookmaker odds**. I provide them for information only.
+Forecasts **do not use bookmaker odds**.
 <br>
 <br>
 You can view the results on the site:

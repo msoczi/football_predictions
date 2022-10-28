@@ -229,7 +229,7 @@ def predict_results(league):
         
         
         ####################################################################################
-        # Scraping future matches and their odds from the STS website
+        # Scraping teams FIFA raitings
         def fifa_rating_scraping(LEAGUE=LEAGUE, config=config):
             page = requests.get(f'https://www.fifaindex.com/teams/fifa'+config['season'][:2]+'/?league='+config['fifa_rating_league_no'][LEAGUE])
             soup = BeautifulSoup(page.content, 'html.parser')
@@ -284,30 +284,23 @@ def predict_results(league):
     def odds_scraping():
         page = requests.get(config['scraping'][league])
         soup = BeautifulSoup(page.content, 'html.parser')
-
-        table = soup.findAll("table", { "class" : "subTable"})
-
-        def take_courses(x):
-            return re.sub('\n+', '\n', x.text).lstrip().rstrip().split('\n')
-
-        def take_date(x):
-            return str(x.find("td", {"class" : "bet bigTip"})).split("oppty_end_date",1)[1][3:13]
-
-        courses = pd.DataFrame(map(take_courses, table))
-        dates = pd.DataFrame(map(take_date, table))
-
-        courses = pd.concat([courses, dates], axis=1, ignore_index=True)
-        del dates
-        courses.columns = ['HomeTeam','h_course','x','d_course','AwayTeam','a_course','Date']
-
-        # Sometimes there are problems with whitespaces on the begining on the team name while scraping
-        courses['HomeTeam'] = courses['HomeTeam'].apply(str.lstrip)
-        courses['AwayTeam'] = courses['AwayTeam'].apply(str.lstrip)
         
-        return courses
+        scraping_teams = soup.findAll("div", { "class" : "fixres__item"})
+        
+        scraping_home_teams = []
+        scraping_away_teams = []
+        for i in range(20): # number of upcoming matches
+            scraping_home_teams.append(scraping_teams[i].findAll("span", { "class" : "swap-text__target"})[0].text)
+            scraping_away_teams.append(scraping_teams[i].findAll("span", { "class" : "swap-text__target"})[1].text)
+        
+        del scraping_teams
+        scraping_matches = pd.DataFrame([scraping_home_teams, scraping_away_teams]).T
+        scraping_matches.columns = ['HomeTeam','AwayTeam']
+        
+        return scraping_matches
     
-    # Call function to create DataFrame 'courses' with odds
-    courses = odds_scraping()
+    # Call function to create DataFrame 'scraping_matches' with odds
+    scraping_matches = odds_scraping()
 
 
 
@@ -319,18 +312,14 @@ def predict_results(league):
     
     
     # setup toolbar
-    toolbar_width = len(courses)
+    toolbar_width = len(scraping_matches)
     sys.stdout.write("Progress: [%s]" % (" " * toolbar_width))
     sys.stdout.flush()
     sys.stdout.write("\b" * (toolbar_width+1)) # return to start of line, after '['
     
-    for i in range(len(courses)):
-        HOME_TEAM = teams_names_dict[courses.iloc[i,0]]
-        AWAY_TEAM = teams_names_dict[courses.iloc[i,4]]
-
-        h_kurs = courses.iloc[i,1]
-        d_kurs = courses.iloc[i,3]
-        a_kurs = courses.iloc[i,5]
+    for i in range(len(scraping_matches)):
+        HOME_TEAM = teams_names_dict[scraping_matches.iloc[i,0]]
+        AWAY_TEAM = teams_names_dict[scraping_matches.iloc[i,1]]
 
         # Line by line, variable for each match are created
         if i == 0:
@@ -351,7 +340,7 @@ def predict_results(league):
     data_to_predict = pd.read_csv('vars_to_predict.csv', sep=',')
     data_to_predict = data_to_predict.drop(['Unnamed: 0'], axis=1)
 
-    courses = courses[['Date','h_course','HomeTeam','d_course','AwayTeam','a_course']]
+    scraping_matches = scraping_matches[['HomeTeam','AwayTeam']]
 
     # Uploading models and components
     xgb_model = pickle.load(open('model\\xgb_model.pkl', "rb"))
@@ -362,9 +351,9 @@ def predict_results(league):
     #data_to_predict = xgb.DMatrix(data_to_predict)   # only when use xgb.train insted of XGBClasiffier
     preds = pd.DataFrame(xgb_model.predict_proba(data_to_predict))
     
-    courses['pr_h_won'] = preds[0]
-    courses['pr_draw']  = preds[1]
-    courses['pr_a_won'] = preds[2]
+    scraping_matches['pr_h_won'] = preds[0]
+    scraping_matches['pr_draw']  = preds[1]
+    scraping_matches['pr_a_won'] = preds[2]
     
     # !Remove courses form returned table - comment this line below if you would like to keep courses
     # courses = courses.drop(['h_course','d_course','a_course'], axis=1)
@@ -374,29 +363,29 @@ def predict_results(league):
     # Add a column with information about who will win the match according to the decision tree
     tree_preds = tree_model.predict(preds)
     preds_after_translation = [dicts2translate['idx2str'][elem] for elem in tree_preds]
-    courses['prediction'] = preds_after_translation
-    courses = courses.round({'pr_h_won': 2, 'pr_draw': 2, 'pr_a_won': 2})
-    courses.columns = ['Date', 'H-odds','Home','D-odds','Away','A-odds','P(H)','P(D)','P(A)','Prediction']
+    scraping_matches['prediction'] = preds_after_translation
+    scraping_matches = scraping_matches.round({'pr_h_won': 2, 'pr_draw': 2, 'pr_a_won': 2})
+    scraping_matches.columns = ['Home','Away','P(H)','P(D)','P(A)','Prediction']
 
     # Remove unnecessary temporary files
     os.remove('vars_to_predict.csv')
     os.remove('E0.csv')
 
-    return courses
+    return scraping_matches
     
 
 # LOG
 print('Predictions for',LEAGUE, 'in progress...')
 
 # Run function for premier league
-courses = predict_results(league = LEAGUE)
+scraping_matches = predict_results(league = LEAGUE)
 
 # Save output in .md file
 #with open('output.md', 'w') as file:
-#    file.write(courses.to_markdown(index = False))
+#    file.write(scraping_matches.to_markdown(index = False))
 # Save output in html file
 with open('output_tables/'+LEAGUE+'.html', 'w') as file:
-    file.write(courses.to_html(index = False, classes='content-table', justify='center'))
+    file.write(scraping_matches.to_html(index = False, classes='content-table', justify='center'))
 
 # LOG
 print(f'Process complited!\n Output in: output_tables/{LEAGUE}.html')
