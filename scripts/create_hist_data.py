@@ -44,7 +44,7 @@ def calc_features(n, file_read, league):
         results = pd.read_csv(file_read, parse_dates=['Date'], dayfirst=True)
         HOME_TEAM = results.iloc[len(results)-1-n].HomeTeam
         AWAY_TEAM = results.iloc[len(results)-1-n].AwayTeam
-        match_res = results.iloc[[len(results)-1-n],:][['Date','HomeTeam','AwayTeam','FTR','B365H','B365D','B365A']]
+        match_res = results.iloc[[len(results)-1-n],:][['Date','HomeTeam','AwayTeam','FTHG','FTAG','FTR','B365H','B365D','B365A']]
         match_res.index = [0]
         results = results.drop(results.tail(n+1).index)
         return HOME_TEAM, AWAY_TEAM, match_res, results

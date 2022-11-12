@@ -30,6 +30,7 @@ python scripts//create_hist_data.py 378 SP15.csv LaLiga_21_22.csv LaLiga
 python scripts//create_hist_data.py 378 F1.csv Ligue1_16_17.csv Ligue1
 python scripts//create_hist_data.py 378 F11.csv Ligue1_17_18.csv Ligue1
 python scripts//create_hist_data.py 378 F12.csv Ligue1_18_19.csv Ligue1
+python scripts//create_hist_data.py 378 F12.csv Ligue1_19_20.csv Ligue1
 python scripts//create_hist_data.py 378 F14.csv Ligue1_20_21.csv Ligue1
 python scripts//create_hist_data.py 378 F15.csv Ligue1_21_22.csv Ligue1
 
