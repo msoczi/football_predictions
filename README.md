@@ -13,11 +13,12 @@ The project was implemented _from scratch_, i.e. it included:
 
 Raw data with match results are downloaded from https://www.football-data.co.uk. <br>
 The advantage of the approach is the ability to predict results from any league. But o far, it is possible to predict the results of the first league of the following countries:
-- England
-- Italy
-- Germany
-- Spain
-- France
+- ![England](https://raw.githubusercontent.com/stevenrskelton/flag-icon/master/png/16/country-4x3/gb.png "England") England
+- ![Italy](https://raw.githubusercontent.com/stevenrskelton/flag-icon/master/png/16/country-4x3/it.png "Italy") Italy
+- ![Germany](https://raw.githubusercontent.com/stevenrskelton/flag-icon/master/png/16/country-4x3/de.png "Germany") Germany
+- ![Spain](https://raw.githubusercontent.com/stevenrskelton/flag-icon/master/png/16/country-4x3/es.png "Spain") Spain
+- ![France](https://raw.githubusercontent.com/stevenrskelton/flag-icon/master/png/16/country-4x3/fr.png "France") France
+
 
 Based on the raw data, I created the appropriate characteristics by myself. The full list of variables is available in the file: <a href="model/variables.md">variables</a>
 <br>
