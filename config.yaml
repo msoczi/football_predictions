@@ -1,6 +1,6 @@
 league : 'PremierLeague'
 
-season : '2223'
+season : '2324'
 
 scraping :
     PremierLeague : 'https://www.skysports.com/premier-league-fixtures'
@@ -38,6 +38,9 @@ teams_names_dict :
         Bournemouth: 'Bournemouth'
         Fulham: 'Fulham'
         Nottingham Forest: "Nott'm Forest"
+        Burnley: 'Burnley'
+        Sheffield United: 'Sheffield United'
+        Luton Town: 'Luton'
     Bundesliga:
         M'gladbach: "M'gladbach"
         FC Augsburg: 'Augsburg'
@@ -57,6 +60,8 @@ teams_names_dict :
         Bayern Munich: 'Bayern Munich'
         Schalke: 'Schalke 04'
         Werder Bremen: 'Werder Bremen'
+        1. FC Heidenheim 1846: 'Heidenheim'
+        SV Darmstadt 98: 'Darmstadt'
     SerieA:
         Inter Milan: "Inter"
         Verona: "Verona"
@@ -78,6 +83,9 @@ teams_names_dict :
         Lecce: "Lecce"
         Monza: "Monza"
         Cremonese: "Cremonese"
+        Frosinone: "Frosinone"
+        Genoa: "Genoa"
+        Cagliari: "Cagliari"
     LaLiga:
         Valencia: "Valencia"
         Cadiz: "Cadiz"
@@ -99,6 +107,9 @@ teams_names_dict :
         Almeria: "Almeria"
         Real Valladolid: "Valladolid"
         Girona: "Girona"
+        Granada: "Granada"
+        Las Palmas: "Las Palmas"
+        Alaves: "Alaves"
     Ligue1 :
         Monaco: 'Monaco'
         Lyon: 'Lyon'
@@ -120,6 +131,8 @@ teams_names_dict :
         Toulouse: 'Toulouse'
         AC Ajaccio: 'Ajaccio'
         Auxerre: 'Auxerre'
+        Le Havre: 'Le Havre'
+        Metz: 'Metz'
 
 
 fifa_rating_league_no :

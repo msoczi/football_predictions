@@ -10,4 +10,5 @@ matplotlib==3.4.3
 seaborn==0.11.2
 requests==2.26.0
 beautifulsoup4==4.10.0
+html5lib==1.1
 optuna==2.10.1
