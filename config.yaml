@@ -1,5 +1,3 @@
-league : 'PremierLeague'
-
 season : '2324'
 
 scraping :
@@ -177,7 +175,7 @@ fifa_rating_teams_dict :
         VfL Wolfsburg: 'Wolfsburg'
         Borussia Dortmund: 'Dortmund'
         1. FSV Mainz 05: 'Mainz'
-        1. FC Köln: 'FC Koln'
+        1. FC Koln: 'FC Koln'
         RB Leipzig: 'RB Leipzig'
         VfL Bochum: 'Bochum'
         Eintracht Frankfurt: 'Ein Frankfurt'
@@ -186,7 +184,7 @@ fifa_rating_teams_dict :
         Hertha BSC: 'Hertha'
         Bayer 04 Leverkusen: 'Leverkusen'
         TSG 1899 Hoffenheim: 'Hoffenheim'
-        Bayern München: 'Bayern Munich'
+        Bayern Munchen: 'Bayern Munich'
         FC Schalke 04: 'Schalke 04'
         SV Werder Bremen: 'Werder Bremen'
     SerieA:
@@ -215,7 +213,7 @@ fifa_rating_teams_dict :
         Cremona: "Cremonese"
     LaLiga:
         Valencia CF: "Valencia"
-        Cádiz CF: "Cadiz"
+        Cadiz CF: "Cadiz"
         RCD Mallorca: "Mallorca"
         Deportivo Alavés: "Alaves"
         CA Osasuna: "Osasuna"
@@ -229,12 +227,12 @@ fifa_rating_teams_dict :
         Granada CF: "Granada"
         Athletic Club de Bilbao: "Ath Bilbao"
         Real Sociedad: "Sociedad"
-        Atlético de Madrid: "Ath Madrid"
+        Atletico de Madrid: "Ath Madrid"
         Levante UD: "Levante"
         Getafe CF: "Getafe"
         Rayo Vallecano: "Vallecano"
         Real Madrid: "Real Madrid"
-        UD Almería: "Almeria"
+        UD Almeria: "Almeria"
         R. Valladolid CF: "Valladolid"
         Girona FC: "Girona"
     Ligue1 :

@@ -229,21 +229,9 @@ def predict_results(league):
         
         
         ####################################################################################
-        # Scraping teams FIFA raitings
-        def fifa_rating_scraping(LEAGUE=LEAGUE, config=config):
-            page = requests.get(f'https://www.fifaindex.com/teams/fifa'+config['season'][:2]+'/?league='+config['fifa_rating_league_no'][LEAGUE])
-            soup = BeautifulSoup(page.content, 'html.parser')
-            
-            table = soup.findAll("table", { "class" : "table table-striped table-teams"})
-
-            fifa_rating_df = pd.read_html(str(table))[0].dropna(axis=0, how='all').dropna(axis=1, how='all').reset_index(drop=True)[['Name','ATT','MID','DEF','OVR']]
-            
-            fifa_rating_df = fifa_rating_df.replace({"Name": config['fifa_rating_teams_dict'][LEAGUE]})
-            fifa_rating_df = fifa_rating_df.set_index('Name')
-            return fifa_rating_df
-        
-        # Call function to create DataFrame 'courses' with odds
-        fifa_rating_df = fifa_rating_scraping()
+        # Get fifa team ratings
+        fifa_rating_df = pd.read_csv(f"model\\fifa_ratings\\fifa_rating_{LEAGUE}_{config['season'][:2]}.csv", sep=';')
+        fifa_rating_df = fifa_rating_df.set_index('Name')
 
 
         ###########################################################################
